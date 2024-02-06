@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { JobListComponent } from './job-list/job-list.component';
@@ -25,4 +25,11 @@ import { BackToTopComponent } from './core/back-to-top/back-to-top.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+
+  constructor(private router: Router) {}
+
+  isHomePage(): boolean {
+    return this.router.url === '/';
+  }
+}

@@ -1,8 +1,10 @@
 <div class="container-xxl bg-white p-0">
   <app-header></app-header>
   <app-search></app-search>
-  <app-about></app-about>
-  <app-categories></app-categories>
+  @if(isHomePage()) {
+    <app-about></app-about>
+    <app-categories></app-categories>
+  }
   <router-outlet></router-outlet>
   <app-footer></app-footer>
   <app-back-to-top></app-back-to-top>
