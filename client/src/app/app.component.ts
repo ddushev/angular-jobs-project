@@ -8,7 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BackToTopComponent } from './core/back-to-top/back-to-top.component';
 import { HomepageService } from './homepage.service';
-import { environment } from '../environments/environment';
+import { environment } from './environments/environment';
 
 @Component({
   selector: 'app-root',
