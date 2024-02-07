@@ -2,7 +2,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { Injectable } from '@angular/core';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
-import { AuthService } from '../account/auth/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { AuthApiActions } from './auth.actions';
 
 @Injectable()

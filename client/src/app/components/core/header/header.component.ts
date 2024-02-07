@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../account/auth/auth.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Observable } from 'rxjs';
-import { AuthState } from '../../state/auth.state';
+import { AuthState } from '../../../state/auth.state';
 import { Store } from '@ngrx/store';
-import { authState } from '../../state/auth.selector';
+import { authState } from '../../../state/auth.selector';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { AuthApiActions } from '../../state/auth.actions';
+import { AuthApiActions } from '../../../state/auth.actions';
 
 @Component({
   selector: 'app-header',
