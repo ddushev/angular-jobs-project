@@ -5,17 +5,17 @@
 
           <div class="col-md-6 login-container">
               <div class="wow fadeInUp" data-wow-delay="0.5s">
-                  <form>
+                  <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
                       <div class="row g-3">
                           <div class="col-md-12">
                               <div class="form-floating">
-                                  <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" #emailInput="ngModel" ngModel>
                                   <label for="email">Email</label>
                               </div>
                           </div>
                           <div class="col-12">
                               <div class="form-floating">
-                                  <input type="password" class="form-control" id="password" placeholder="Password">
+                                  <input type="password" class="form-control"  name="password" id="password" placeholder="Password" #passwordInput="ngModel" ngModel>
                                   <label for="password">Password</label>
                               </div>
                           </div>
