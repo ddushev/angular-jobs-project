@@ -7,7 +7,7 @@ import { SearchComponent } from './core/search/search.component';
 import { AboutComponent } from './about/about.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BackToTopComponent } from './core/back-to-top/back-to-top.component';
-import { HomepageService } from './homepage.service';
+import { HomepageService } from './services/homepage/homepage.service';
 import { environment } from './environments/environment';
 
 @Component({
