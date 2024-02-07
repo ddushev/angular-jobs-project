@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { AuthState } from '../../state/auth.state';
 import { Store } from '@ngrx/store';
-import { authState } from '../../state/auth.selector';
-import { Observable } from 'rxjs';
 import { AuthApiActions } from '../../state/auth.actions';
 
 @Component({
