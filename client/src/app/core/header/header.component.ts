@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../../account/user/user.service';
+import { AuthService } from '../../account/auth/auth.service';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../state/auth.state';
 import { Store } from '@ngrx/store';
