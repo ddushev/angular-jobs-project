@@ -23,6 +23,27 @@ export class AuthEffects {
     )
   );
 
+  registerUser$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(AuthApiActions.registerUser),
+    exhaustMap(({ registerData }) =>
+      this.authService.register(registerData).pipe(
+        map((user) => AuthApiActions.registerUserSuccess({ user: {
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          imageUrl: user.imageUrl,
+          _id: user._id,
+          accessToken: user.accessToken,
+        } })),
+        catchError((error) =>
+          of(AuthApiActions.loginUserFailure({ errorMsg: error.error.message }))
+        )
+      )
+    )
+  )
+);
+
   logoutUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthApiActions.logoutUser),

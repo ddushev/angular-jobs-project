@@ -21,6 +21,17 @@ export const authReducer = createReducer(
     isAuth:false,
     errorMsg,
   })),
+  on(AuthApiActions.registerUser, (state) => state),
+  on(AuthApiActions.registerUserSuccess, (_state, {user}) => ({
+    user,
+    isAuth: true,
+    errorMsg: null,
+  })),
+  on(AuthApiActions.registerUserFailure, (_state, {errorMsg}) => ({
+    user: null,
+    isAuth:false,
+    errorMsg,
+  })),
   on(AuthApiActions.logoutUser, (state) => state),
   on(AuthApiActions.logoutUserSuccess, () => ({
     user: null,

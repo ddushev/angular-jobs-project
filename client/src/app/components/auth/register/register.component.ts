@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { AuthApiActions } from '../../../state/auth.actions';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +20,8 @@ export class RegisterComponent {
       form.reset();
       return;
     }
-    console.log(form.value);
-    // this.router.navigate(['/job-listings'])
-    // form.reset();
+    this.store.dispatch(AuthApiActions.registerUser({registerData: form.value}));
+    this.router.navigate(['/job-listings'])
+    form.reset();
   }
 }
