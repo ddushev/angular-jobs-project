@@ -3,14 +3,15 @@
 }
 
 .input-error {
-  border: 2px solid var(--error);
+  border: 2px solid var(--bs-danger);
 }
 
 .error-msg {
   margin: 10px 0 0 12px;
-  color: var(--error);
+  color: var(--bs-danger);
 }
 
 .btn-primary:disabled {
-  background-color: var(--error);
+  background-color: var(--bs-gray);
+  border-color: var(--bs-gray);
 }

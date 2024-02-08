@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  public emailPattern = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+  public emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
   constructor(private store: Store, private router: Router) {}
 
   handleLogin(form: NgForm) {
