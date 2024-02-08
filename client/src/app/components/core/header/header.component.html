@@ -1,21 +1,35 @@
 {{authState$ | async | json }}
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a routerLink="/" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-        <h1 class="m-0 text-primary">AngularJobs</h1>
-    </a>
-    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a routerLink="/" class="nav-item nav-link">Home</a>
-            <a routerLink="job-listings" class="nav-item nav-link">Jobs' List</a>
-            <a routerLink="job-details" class="nav-item nav-link">Job Detail</a>
-            <a routerLink="create-job" class="nav-item nav-link">Create job</a>
-            <a routerLink="login" class="nav-item nav-link">Login</a>
-            <a routerLink="register" class="nav-item nav-link">Register</a>
-            <a href="#" (click)="handleLogout($event)" class="nav-item nav-link">Logout</a>
-        </div>
-        <a routerLink="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
+  <a routerLink="/" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+    <h1 class="m-0 text-primary">AngularJobs</h1>
+  </a>
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+      <a routerLink="/" class="nav-item nav-link">Home</a>
+      <a routerLink="job-listings" class="nav-item nav-link">Jobs' List</a>
+      <a routerLink="job-details" class="nav-item nav-link">Job Detail</a>
+      <a routerLink="create-job" class="nav-item nav-link">Create job</a>
     </div>
+    <div class="nav-item dropdown">
+      @if((authState$ | async)?.isAuth) {
+      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <i class="fas fa-user"></i>
+      </a>
+      <div class="dropdown-menu rounded-0 m-0">
+        <a href="#" (click)="handleLogout($event)" class="nav-item nav-link">Logout</a>
+      </div>
+      }@else {
+      <a href="#" class="nav-link" data-bs-toggle="dropdown">
+        <i class="fas fa-sign-in-alt"></i>
+      </a>
+      <div class="dropdown-menu rounded-0 m-0">
+        <a routerLink="login" class="nav-item nav-link">Login</a>
+        <a routerLink="register" class="nav-item nav-link">Register</a>
+      </div>
+      }
+    </div>
+  </div>
 </nav>

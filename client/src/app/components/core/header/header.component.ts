@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../../state/auth.state';
@@ -17,10 +17,11 @@ import { AuthApiActions } from '../../../state/auth.actions';
 })
 export class HeaderComponent {
   authState$: Observable<AuthState> = this.store.select(authState);
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   handleLogout(event: MouseEvent) {
     event.preventDefault();
     this.store.dispatch(AuthApiActions.logoutUser());
+    this.router.navigate(['/']);
   }
 }
