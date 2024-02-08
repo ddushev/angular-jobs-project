@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Observable } from 'rxjs';
-import { AuthState } from '../../../state/auth.state';
+import { IAuthState } from '../../../state/auth.state';
 import { Store } from '@ngrx/store';
 import { authState } from '../../../state/auth.selector';
 import { AsyncPipe, JsonPipe } from '@angular/common';
@@ -16,7 +16,7 @@ import { AuthApiActions } from '../../../state/auth.actions';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  authState$: Observable<AuthState> = this.store.select(authState);
+  authState$: Observable<IAuthState> = this.store.select(authState);
   constructor(private store: Store, private router: Router) {}
 
   handleLogout(event: MouseEvent) {

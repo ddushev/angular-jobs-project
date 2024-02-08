@@ -5,7 +5,7 @@ import { AuthApiActions } from '../../../state/auth.actions';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { authState } from '../../../state/auth.selector';
 import { Observable } from 'rxjs';
-import { AuthState } from '../../../state/auth.state';
+import { IAuthState } from '../../../state/auth.state';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ import { AuthState } from '../../../state/auth.state';
 })
 export class LoginComponent implements OnDestroy {
   public emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
-  authState$: Observable<AuthState> = this.store.select(authState);
+  authState$: Observable<IAuthState> = this.store.select(authState);
   constructor(private store: Store) {}
 
   handleLogin(form: NgForm) {

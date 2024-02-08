@@ -1,3 +1,23 @@
+.error-container {
+  margin-bottom: 40px;
+  color: var(--bs-danger);
+  text-align: center;
+}
+
 .register-container {
   margin: 0 auto;
+}
+
+.input-error {
+  border: 2px solid var(--bs-danger);
+}
+
+.error-msg {
+  margin: 10px 0 0 12px;
+  color: var(--bs-danger);
+}
+
+.btn-primary:disabled {
+  background-color: var(--bs-gray);
+  border-color: var(--bs-gray);
 }

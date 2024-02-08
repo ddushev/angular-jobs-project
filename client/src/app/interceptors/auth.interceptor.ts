@@ -4,12 +4,12 @@ import { Store } from '@ngrx/store';
 import { inject } from '@angular/core';
 import { authState } from '../state/auth.selector';
 import { Observable, switchMap, take } from 'rxjs';
-import { AuthState } from '../state/auth.state';
+import { IAuthState } from '../state/auth.state';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const store = inject(Store);
   const apiURL = environment.apiURL
-  const authState$: Observable<AuthState> = store.select(authState);
+  const authState$: Observable<IAuthState> = store.select(authState);
   return authState$.pipe(
     take(1),
     switchMap(authState => {
