@@ -1,3 +1,17 @@
 .fas {
   font-size: 30px;
 }
+
+.nav-link {
+  padding-left: 0rem;
+}
+
+@media (max-width: 991.98px) {
+  .p-4 {
+    padding-bottom: 0 !important;
+  }
+
+  .nav-link {
+    padding-left: 1.5rem;
+  }
+}
