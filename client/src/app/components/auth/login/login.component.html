@@ -9,20 +9,47 @@
             <div class="row g-3">
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                    #emailInput="ngModel" ngModel>
+                  <input required type="email" class="form-control" name="email" id="email"
+                    placeholder="Your Email" #emailInput="ngModel" ngModel
+                    [pattern]="emailPattern"
+                    [ngClass]="emailInput.touched && (emailInput.hasError('required') || emailInput.hasError('pattern')) ? 'input-error' : '' ">
                   <label for="email">Email</label>
+                  @if(emailInput.touched) {
+                  @if(emailInput.hasError('required')) {
+                  <p class="error-msg">
+                    Email is required!
+                  </p>
+                  }
+                  @if(emailInput.hasError('pattern')) {
+                  <p class="error-msg">
+                    Email is not valid!
+                  </p>
+                  }
+                  }
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                    #passwordInput="ngModel" ngModel>
+                  <input required minlength="4" type="password" class="form-control" name="password" id="password"
+                    placeholder="Password" #passwordInput="ngModel" ngModel
+                    [ngClass]="passwordInput.touched && (passwordInput.hasError('required') || passwordInput.hasError('minlength')) ? 'input-error' : '' ">
+                  @if(passwordInput.touched) {
+                  @if(passwordInput?.errors?.['required']) {
+                  <p class="error-msg">
+                    Password is required!
+                  </p>
+                  }
+                  @if(passwordInput?.errors?.['minlength']) {
+                  <p class="error-msg">
+                    Password must be at least 4 characters!
+                  </p>
+                  }
+                  }
                   <label for="password">Password</label>
                 </div>
               </div>
               <div class="col-12">
-                <button class="btn btn-primary w-100 py-3" type="submit">Sign in</button>
+                <button [disabled]="loginForm.invalid" class="btn btn-primary w-100 py-3" type="submit">Sign in</button>
               </div>
             </div>
           </form>
