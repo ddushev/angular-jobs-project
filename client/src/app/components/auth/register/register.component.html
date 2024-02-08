@@ -1,49 +1,54 @@
 <div class="container-xxl py-5">
   <div class="container">
-      <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Register</h1>
-      <div class="row g-4">
+    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Register</h1>
+    <div class="row g-4">
 
-          <div class="col-md-6 register-container">
-              <div class="wow fadeInUp" data-wow-delay="0.5s">
-                  <form>
-                      <div class="row g-3">
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                                  <label for="firstName">First Name</label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                                <label for="lastName">Last Name</label>
-                            </div>
-                        </div>
-                          <div class="col-md-12">
-                              <div class="form-floating">
-                                  <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                  <label for="email">Your Email</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                              <div class="form-floating">
-                                  <input type="password" class="form-control" id="password" placeholder="Password">
-                                  <label for="password">Password</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="rePassword" placeholder="Repeat Password">
-                                <label for="rePassword">Repeat Password</label>
-                            </div>
-                        </div>
-                          <div class="col-12">
-                              <button class="btn btn-primary w-100 py-3" type="submit">Sign up</button>
-                          </div>
-                      </div>
-                  </form>
+      <div class="col-md-6 register-container">
+        <div class="wow fadeInUp" data-wow-delay="0.5s">
+          <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm)">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
+                    #firstNameInput="ngModel" ngModel>
+                  <label for="firstName">First Name</label>
+                </div>
               </div>
-          </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name"
+                    #lastNameInput="ngModel" ngModel>
+                  <label for="lastName">Last Name</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                    #emailInput="ngModel" ngModel>
+                  <label for="email">Your Email</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                    #passwordInput="ngModel" ngModel>
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="password" class="form-control" name="rePassword" id="rePassword"
+                    placeholder="Repeat Password" #rePasswordInput="ngModel" ngModel>
+                  <label for="rePassword">Repeat Password</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Sign up</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
 </div>

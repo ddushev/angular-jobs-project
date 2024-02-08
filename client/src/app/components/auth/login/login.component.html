@@ -1,31 +1,33 @@
 <div class="container-xxl py-5 ">
   <div class="container">
-      <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Login</h1>
-      <div class="row g-4">
+    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Login</h1>
+    <div class="row g-4">
 
-          <div class="col-md-6 login-container">
-              <div class="wow fadeInUp" data-wow-delay="0.5s">
-                  <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
-                      <div class="row g-3">
-                          <div class="col-md-12">
-                              <div class="form-floating">
-                                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" #emailInput="ngModel" ngModel>
-                                  <label for="email">Email</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                              <div class="form-floating">
-                                  <input type="password" class="form-control"  name="password" id="password" placeholder="Password" #passwordInput="ngModel" ngModel>
-                                  <label for="password">Password</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                              <button class="btn btn-primary w-100 py-3" type="submit">Sign in</button>
-                          </div>
-                      </div>
-                  </form>
+      <div class="col-md-6 login-container">
+        <div class="wow fadeInUp" data-wow-delay="0.5s">
+          <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
+            <div class="row g-3">
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                    #emailInput="ngModel" ngModel>
+                  <label for="email">Email</label>
+                </div>
               </div>
-          </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                    #passwordInput="ngModel" ngModel>
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Sign in</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
 </div>
