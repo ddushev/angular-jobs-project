@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
 import { AuthApiActions } from '../../../state/auth.actions';
-import { NgClass } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
+import { authState } from '../../../state/auth.selector';
+import { Observable } from 'rxjs';
+import { AuthState } from '../../../state/auth.state';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgClass],
+  imports: [FormsModule, NgClass, AsyncPipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   public emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
-  constructor(private store: Store, private router: Router) {}
+  authState$: Observable<AuthState> = this.store.select(authState);
+  constructor(private store: Store) {}
 
   handleLogin(form: NgForm) {
     if (form.invalid) {
@@ -22,7 +25,9 @@ export class LoginComponent {
       return;
     }
     this.store.dispatch(AuthApiActions.loginUser({credentials: form.value}));
-    this.router.navigate(['/job-listings'])
     form.reset();
+  }
+  ngOnDestroy(): void {
+    this.store.dispatch(AuthApiActions.clearErrorMsg());
   }
 }

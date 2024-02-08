@@ -42,5 +42,9 @@ export const authReducer = createReducer(
     ...state,
     errorMsg,
   })),
+  on(AuthApiActions.clearErrorMsg, (state) => ({
+    ...state,
+    errorMsg: null,
+  })),
 
 )

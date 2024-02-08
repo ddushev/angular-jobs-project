@@ -4,10 +4,11 @@ import { Injectable } from '@angular/core';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { AuthApiActions } from './auth.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {}
 
   loginUser$ = createEffect(() =>
     this.actions$.pipe(
@@ -44,6 +45,17 @@ export class AuthEffects {
   )
 );
 
+loginOrRegisterSuccess$ = createEffect(
+  () =>
+    this.actions$.pipe(
+      ofType(AuthApiActions.loginUserSuccess, AuthApiActions.registerUserSuccess),
+      tap(() => {
+        this.router.navigate(['/job-listings']);
+      })
+    ),
+  { dispatch: false }
+);
+
   logoutUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthApiActions.logoutUser),
@@ -58,12 +70,12 @@ export class AuthEffects {
     )
   );
 
-  displayErrorAlert$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(AuthApiActions.loginUserFailure, AuthApiActions.logoutUserFailure),
-        tap(({ errorMsg }) => alert(errorMsg))
-      ),
-    { dispatch: false }
-  );
+  // displayErrorAlert$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(AuthApiActions.loginUserFailure, AuthApiActions.registerUserFailure, AuthApiActions.logoutUserFailure),
+  //       tap(({ errorMsg }) => alert(errorMsg))
+  //     ),
+  //   { dispatch: false }
+  // );
 }
