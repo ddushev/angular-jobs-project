@@ -7,12 +7,12 @@ import { authState } from '../../../state/auth.selector';
 import { Observable } from 'rxjs';
 import { IAuthState } from '../../../state/auth.state';
 import { AuthErrorComponent } from '../auth-error/auth-error.component';
-import { InputErrorDirective } from '../../../directives/input-error.directive';
+import { InputValidationDirective } from '../../../directives/input-validation.directive';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgClass, AsyncPipe, AuthErrorComponent, InputErrorDirective],
+  imports: [FormsModule, NgClass, AsyncPipe, AuthErrorComponent, InputValidationDirective],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

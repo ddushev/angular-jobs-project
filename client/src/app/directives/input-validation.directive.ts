@@ -2,30 +2,30 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
 import { NgModel } from '@angular/forms';
 
 @Directive({
-  selector: '[appInputError]',
+  selector: '[appInputValidation]',
   standalone: true
 })
-export class InputErrorDirective {
-  @Input() appInputError!: NgModel
+export class InputValidationDirective {
+  @Input() appInputValidation!: NgModel
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('blur') onBlur() {
     const nextSibling = this.el.nativeElement.nextSibling;
-    if (this.appInputError.errors) {
+    if (this.appInputValidation.errors) {
       this.renderer.addClass(this.el.nativeElement, 'input-error');
 
       if (nextSibling && nextSibling.nodeName === 'P' && nextSibling.classList.contains('error-msg')) {
         this.renderer.removeChild(this.el.nativeElement.parentNode, nextSibling);
       }
       const errors = [];
-      if (this.appInputError.hasError('required')) {
+      if (this.appInputValidation.hasError('required')) {
         errors.push('This field is required!');
       }
-      if (this.appInputError.hasError('pattern')) {
+      if (this.appInputValidation.hasError('pattern')) {
         errors.push('The email address is not valid!');
       }
-      if (this.appInputError.hasError('minlength')) {
-        errors.push(`Password should have min length of ${this.appInputError.errors['minlength'].requiredLength}`);
+      if (this.appInputValidation.hasError('minlength')) {
+        errors.push(`Password should have min length of ${this.appInputValidation.errors['minlength'].requiredLength}`);
       }
       const errMsgEl = this.renderer.createElement('p');
       this.renderer.addClass(errMsgEl, 'error-msg');

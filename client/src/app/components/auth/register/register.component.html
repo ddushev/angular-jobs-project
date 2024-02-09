@@ -26,7 +26,7 @@
               <div class="col-md-12">
                 <div class="form-floating">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                    #emailInput="ngModel" ngModel>
+                    #emailInput="ngModel" ngModel pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}$">
                   <label for="email">Your Email</label>
                 </div>
               </div>
