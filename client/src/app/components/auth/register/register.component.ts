@@ -7,16 +7,16 @@ import { IAuthState } from '../../../state/auth.state';
 import { authState } from '../../../state/auth.selector';
 import { AsyncPipe } from '@angular/common';
 import { AuthErrorComponent } from '../auth-error/auth-error.component';
+import { InputValidationDirective } from '../../../directives/input-validation.directive';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, AsyncPipe, AuthErrorComponent],
+  imports: [FormsModule, AsyncPipe, AuthErrorComponent, InputValidationDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnDestroy {
-  emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
   authState$: Observable<IAuthState> = this.store.select(authState);
 
 

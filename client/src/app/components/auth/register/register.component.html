@@ -3,7 +3,7 @@
     <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Register</h1>
     <div class="row g-4">
       @if((authState$ | async)?.errorMsg) {
-        <app-auth-error></app-auth-error>
+      <app-auth-error></app-auth-error>
       }
       <div class="col-md-6 register-container">
         <div class="wow fadeInUp" data-wow-delay="0.5s">
@@ -11,41 +11,42 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
-                    #firstNameInput="ngModel" ngModel>
+                  <input [appInputValidation]="firstNameInput" required type="text" class="form-control"
+                    name="firstName" id="firstName" placeholder="First Name" #firstNameInput="ngModel" ngModel>
                   <label for="firstName">First Name</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name"
-                    #lastNameInput="ngModel" ngModel>
+                  <input [appInputValidation]="lastNameInput" required type="text" class="form-control"
+                    name="lastName" id="lastName" placeholder="Last Name" #lastNameInput="ngModel" ngModel>
                   <label for="lastName">Last Name</label>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                    #emailInput="ngModel" ngModel pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}$">
+                  <input [appInputValidation]="emailInput" required type="email" class="form-control" name="email"
+                    id="email" placeholder="Your Email" #emailInput="ngModel" ngModel
+                    pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}$">
                   <label for="email">Your Email</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                    #passwordInput="ngModel" ngModel>
+                  <input [appInputValidation]="passwordInput" minlength="3" required type="password" class="form-control"
+                    name="password" id="password" placeholder="Password" #passwordInput="ngModel" ngModel>
                   <label for="password">Password</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input type="password" class="form-control" name="rePassword" id="rePassword"
-                    placeholder="Repeat Password" #rePasswordInput="ngModel" ngModel>
+                  <input [appInputValidation]="rePasswordInput" required type="password" class="form-control"
+                    name="rePassword" id="rePassword" placeholder="Repeat Password" #rePasswordInput="ngModel" ngModel>
                   <label for="rePassword">Repeat Password</label>
                 </div>
               </div>
               <div class="col-12">
-                <button class="btn btn-primary w-100 py-3" type="submit">Sign up</button>
+                <button [disabled]="registerForm.invalid" class="btn btn-primary w-100 py-3" type="submit">Sign up</button>
               </div>
             </div>
           </form>

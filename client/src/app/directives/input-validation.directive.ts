@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Directive({
   selector: '[appInputValidation]',
@@ -7,10 +7,20 @@ import { NgModel } from '@angular/forms';
 })
 export class InputValidationDirective {
   @Input() appInputValidation!: NgModel
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private form: NgForm) {}
 
   @HostListener('blur') onBlur() {
     const nextSibling = this.el.nativeElement.nextSibling;
+
+    if (this.appInputValidation.name === 'rePassword') {
+      const passwordInput = this.form.control.get('password');
+      if (passwordInput?.value !== this.appInputValidation.control.value) {
+        this.appInputValidation.control.setErrors({ passwordMismatch: true });
+      } else {
+        this.appInputValidation.control.setErrors(null);
+      }
+    }
+
     if (this.appInputValidation.errors) {
       this.renderer.addClass(this.el.nativeElement, 'input-error');
 
@@ -25,13 +35,18 @@ export class InputValidationDirective {
         errors.push('The email address is not valid!');
       }
       if (this.appInputValidation.hasError('minlength')) {
-        errors.push(`Password should have min length of ${this.appInputValidation.errors['minlength'].requiredLength}`);
+        errors.push(`Field should have min length of ${this.appInputValidation.errors['minlength'].requiredLength} characters!`);
       }
+      if (this.appInputValidation.hasError('passwordMismatch')) {
+        errors.push(`Passwords should match!`);
+      }
+
       const errMsgEl = this.renderer.createElement('p');
       this.renderer.addClass(errMsgEl, 'error-msg');
       const errText = this.renderer.createText(errors.join('\n'));
       this.renderer.appendChild(errMsgEl, errText);
       this.renderer.insertBefore(this.el.nativeElement.parentNode, errMsgEl, this.el.nativeElement.nextSibling);
+
     }else {
       this.renderer.removeClass(this.el.nativeElement, 'input-error');
 
