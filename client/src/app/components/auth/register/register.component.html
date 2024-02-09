@@ -7,7 +7,7 @@
       }
       <div class="col-md-6 register-container">
         <div class="wow fadeInUp" data-wow-delay="0.5s">
-          <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm)">
+          <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm)" [appMatchPassword]="['password', 'rePassword']">
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-floating">
@@ -40,8 +40,9 @@
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input [appInputValidation]="rePasswordInput" required type="password" class="form-control"
+                  <input [appInputValidation]="rePasswordInput" type="password" class="form-control"
                     name="rePassword" id="rePassword" placeholder="Repeat Password" #rePasswordInput="ngModel" ngModel>
+                    <p class="error-msg"></p>
                   <label for="rePassword">Repeat Password</label>
                 </div>
               </div>

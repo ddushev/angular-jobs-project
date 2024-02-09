@@ -7,19 +7,10 @@ import { NgForm, NgModel } from '@angular/forms';
 })
 export class InputValidationDirective {
   @Input() appInputValidation!: NgModel
-  constructor(private el: ElementRef, private renderer: Renderer2, private form: NgForm) {}
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('blur') onBlur() {
     const nextSibling = this.el.nativeElement.nextSibling;
-
-    if (this.appInputValidation.name === 'rePassword') {
-      const passwordInput = this.form.control.get('password');
-      if (passwordInput?.value !== this.appInputValidation.control.value) {
-        this.appInputValidation.control.setErrors({ passwordMismatch: true });
-      } else {
-        this.appInputValidation.control.setErrors(null);
-      }
-    }
 
     if (this.appInputValidation.errors) {
       this.renderer.addClass(this.el.nativeElement, 'input-error');

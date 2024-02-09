@@ -7,7 +7,7 @@ import { authState } from '../../../state/auth.selector';
 import { Observable } from 'rxjs';
 import { IAuthState } from '../../../state/auth.state';
 import { AuthErrorComponent } from '../auth-error/auth-error.component';
-import { InputValidationDirective } from '../../../directives/input-validation.directive';
+import { InputValidationDirective } from '../../../directives/input-validation/input-validation.directive';
 
 @Component({
   selector: 'app-login',
