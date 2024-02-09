@@ -3,7 +3,7 @@
     <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Login</h1>
     <div class="row g-4">
       @if((authState$ | async)?.errorMsg) {
-        <app-auth-error></app-auth-error>
+      <app-auth-error></app-auth-error>
       }
       <div class="col-md-6 login-container">
         <div class="wow fadeInUp" data-wow-delay="0.5s">
@@ -11,41 +11,15 @@
             <div class="row g-3">
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input required type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                    #emailInput="ngModel" ngModel [pattern]="emailPattern"
-                    [ngClass]="emailInput.touched && (emailInput.hasError('required') || emailInput.hasError('pattern')) ? 'input-error' : '' ">
+                  <input [appInputError]="emailInput" required type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                    #emailInput="ngModel" ngModel [pattern]="emailPattern">
                   <label for="email">Email</label>
-                  @if(emailInput.touched) {
-                  @if(emailInput.hasError('required')) {
-                  <p class="error-msg">
-                    Email is required!
-                  </p>
-                  }
-                  @if(emailInput.hasError('pattern')) {
-                  <p class="error-msg">
-                    Email is not valid!
-                  </p>
-                  }
-                  }
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input required minlength="4" type="password" class="form-control" name="password" id="password"
-                    placeholder="Password" #passwordInput="ngModel" ngModel
-                    [ngClass]="passwordInput.touched && (passwordInput.hasError('required') || passwordInput.hasError('minlength')) ? 'input-error' : '' ">
-                  @if(passwordInput.touched) {
-                  @if(passwordInput?.errors?.['required']) {
-                  <p class="error-msg">
-                    Password is required!
-                  </p>
-                  }
-                  @if(passwordInput?.errors?.['minlength']) {
-                  <p class="error-msg">
-                    Password must be at least 4 characters!
-                  </p>
-                  }
-                  }
+                  <input [appInputError]="passwordInput" required minlength="4" type="password" class="form-control" name="password" id="password"
+                    placeholder="Password" #passwordInput="ngModel" ngModel>
                   <label for="password">Password</label>
                 </div>
               </div>
