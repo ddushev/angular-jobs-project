@@ -17,7 +17,6 @@ import { InputErrorDirective } from '../../../directives/input-error.directive';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnDestroy {
-  emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
   authState$: Observable<IAuthState> = this.store.select(authState);
   constructor(private store: Store) {}
 
