@@ -38,7 +38,7 @@ export class AuthEffects {
           accessToken: user.accessToken,
         } })),
         catchError((error) =>
-          of(AuthApiActions.loginUserFailure({ errorMsg: error.error.message }))
+          of(AuthApiActions.registerUserFailure({ errorMsg: error.error.message }))
         )
       )
     )

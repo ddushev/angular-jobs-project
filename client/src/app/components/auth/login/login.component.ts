@@ -6,16 +6,17 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { authState } from '../../../state/auth.selector';
 import { Observable } from 'rxjs';
 import { IAuthState } from '../../../state/auth.state';
+import { AuthErrorComponent } from '../auth-error/auth-error.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgClass, AsyncPipe],
+  imports: [FormsModule, NgClass, AsyncPipe, AuthErrorComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnDestroy {
-  public emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
+  emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
   authState$: Observable<IAuthState> = this.store.select(authState);
   constructor(private store: Store) {}
 

@@ -1,22 +1,22 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
 import { AuthApiActions } from '../../../state/auth.actions';
 import { Observable } from 'rxjs';
 import { IAuthState } from '../../../state/auth.state';
 import { authState } from '../../../state/auth.selector';
 import { AsyncPipe } from '@angular/common';
+import { AuthErrorComponent } from '../auth-error/auth-error.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, AsyncPipe],
+  imports: [FormsModule, AsyncPipe, AuthErrorComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnDestroy {
-  public emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
+  emailPattern = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
   authState$: Observable<IAuthState> = this.store.select(authState);
 
 
