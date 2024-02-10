@@ -1,0 +1,15 @@
+export interface IJob  {
+  _ownerId: string,
+  companyName: string,
+  positionName: string,
+  positionCategory: string,
+  employmentType: string,
+  officePolicy: string,
+  salary: string,
+  location: string,
+  description: string,
+  responsibilities: string,
+  qualifications: string,
+  _createdOn: number | Date,
+  _id: string,
+}
