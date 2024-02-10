@@ -3,37 +3,65 @@
   <form>
     <div class="row g-3">
       <div class="col-12 col-sm-6">
-        <input type="text" class="form-control" placeholder="Company Name">
+        <input type="text" name="companyName" class="form-control" placeholder="Company Name">
       </div>
       <div class="col-12 col-sm-6">
-        <input type="text" class="form-control" placeholder="Company Logo(optional)">
+        <input type="text" name="positionName" class="form-control" placeholder="Position Name">
       </div>
       <div class="col-12 col-sm-6">
-        <input type="text" class="form-control" placeholder="Position Name">
+        <select name="positionCategory" class="form-select">
+          <option selected disabled>Position Category</option>
+          <option value="1">Marketing</option>
+          <option value="2">Human Resources</option>
+          <option value="3">Project Management</option>
+          <option value="4">Business Development</option>
+          <option value="5">Sales & Communication</option>
+          <option value="6">Teaching & Education</option>
+          <option value="7">Design & Creative</option>
+          <option value="8">Customer Service</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <select name="employmentType" class="form-select">
+          <option selected disabled>Employment Type</option>
+          <option value="1">Full Time</option>
+          <option value="2">Part Time</option>
+          <option value="3">Internship</option>
+          <option value="4">Freelance/Project</option>
+        </select>
       </div>
       <div class="col-12 col-sm-6">
-        <input type="text" class="form-control" placeholder="Job Category">
+        <select name="officePolicy" class="form-select">
+          <option selected disabled>Office Policy</option>
+          <option value="1">Office</option>
+          <option value="2">Home</option>
+          <option value="3">Hybrid</option>
+        </select>
       </div>
       <div class="col-12 col-sm-6">
-        <input type="text" class="form-control" placeholder="Job Location">
+        <select name="salary" class="form-select">
+          <option selected disabled>Salary Range (per year)</option>
+          <option value="1">Below 20 000</option>
+          <option value="2">20 000 - 39 999</option>
+          <option value="3">40 000 - 59 999</option>
+          <option value="4">60 000 - 79 999</option>
+          <option value="5">80 000 - 99 999</option>
+          <option value="6">Above 100 000</option>
+          <option value="7">Confidential</option>
+        </select>
       </div>
       <div class="col-12 col-sm-6">
-        <input type="text" class="form-control" placeholder="Employment">
-      </div>
-      <div class="col-12 col-sm-6">
-        <input type="number" class="form-control" placeholder="Minimum salary">
-      </div>
-      <div class="col-12 col-sm-6">
-        <input type="number" class="form-control" placeholder="Maximum salary">
+        <input type="text" name="location" class="form-control" placeholder="Job Location">
       </div>
       <div class="col-12">
-        <textarea class="form-control" rows="5" placeholder="Job description"></textarea>
+        <textarea name="description" class="form-control" rows="5" placeholder="Job description"></textarea>
       </div>
       <div class="col-12">
-        <textarea class="form-control" rows="5" placeholder="Responsibilities"></textarea>
+        <textarea name="responsibilities" class="form-control" rows="5" placeholder="Responsibilities"></textarea>
       </div>
       <div class="col-12">
-        <textarea class="form-control" rows="5" placeholder="Qualifications"></textarea>
+        <textarea name="qualifications" class="form-control" rows="5" placeholder="Qualifications"></textarea>
       </div>
       <div class="col-12">
         <button class="btn btn-primary w-100" type="submit">Submit</button>
