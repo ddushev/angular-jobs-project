@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/core/header/header.component';
@@ -9,6 +9,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { BackToTopComponent } from './components/core/back-to-top/back-to-top.component';
 import { HomepageService } from './services/homepage/homepage.service';
 import { environment } from './environments/environment';
+import { Store } from '@ngrx/store';
+import { AuthPersistActions } from './state/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +28,12 @@ import { environment } from './environments/environment';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   apiURL = environment.apiURL
 
-  constructor(public homePage: HomepageService) {}
+  constructor(public homePage: HomepageService, private store: Store) {}
 
+  ngOnInit(): void {
+    this.store.dispatch(AuthPersistActions.loadAuthDataFromLocalStorage());
+  }
 }

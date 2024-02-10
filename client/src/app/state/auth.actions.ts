@@ -3,6 +3,14 @@ import { ICredentials } from "../types/credentials";
 import { IUser } from "../types/user";
 import { IRegisterData } from "../types/registerData";
 
+export const AuthPersistActions = createActionGroup({
+  source: 'Session Persist',
+  events: {
+    loadAuthDataFromLocalStorage: emptyProps(),
+    noSessionPersisted: emptyProps(),
+  }
+})
+
 
 export const AuthApiActions = createActionGroup({
   source: 'Users API',
@@ -15,7 +23,7 @@ export const AuthApiActions = createActionGroup({
     registerUserFailure: props<{errorMsg: string}>(),
     logoutUser: emptyProps(),
     logoutUserSuccess: emptyProps(),
-    logoutUserFailure: props<{errorMsg: string}>(),
+    logoutUserFailure: emptyProps(),
     clearErrorMsg: emptyProps(),
   }
 })
