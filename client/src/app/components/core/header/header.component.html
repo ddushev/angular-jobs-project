@@ -1,4 +1,3 @@
-{{authState$ | async | json }}
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
   <a routerLink="/" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
     <h1 class="m-0 text-primary">AngularJobs</h1>
@@ -11,11 +10,13 @@
       <a routerLink="/" class="nav-item nav-link">Home</a>
       <a routerLink="job-listings" class="nav-item nav-link">Jobs' List</a>
       <a routerLink="job-details" class="nav-item nav-link">Job Detail</a>
-      <a routerLink="create-job" class="nav-item nav-link">Create job</a>
+      @if((authState$ | async)?.isAuth) {
+        <a routerLink="create-job" class="nav-item nav-link">Create job</a>
+      }
     </div>
     <div class="nav-item dropdown">
       @if((authState$ | async)?.isAuth) {
-      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
         <i class="fas fa-user"></i>
       </a>
       <div class="dropdown-menu rounded-0 m-0 logout">
