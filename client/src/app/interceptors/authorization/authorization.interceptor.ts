@@ -11,13 +11,12 @@ export const authorizationInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((error) => {
-      switch(error.status) {
-        case 403: {
-          store.dispatch(AuthApiActions.logoutUser());
-          router.navigate(['/login']);
-        }
+      if(error.status === 403 && error.error.message === "Invalid access token") {
+        store.dispatch(AuthApiActions.logoutUser());
+        router.navigate(['/login']);
       }
-      return throwError(() => error.message)
+
+      return throwError(() => error)
     })
   );
 };
