@@ -5,7 +5,7 @@ import { catchError, exhaustMap, finalize, map, of, tap } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { AuthApiActions, AuthPersistActions } from './auth.actions';
 import { Router } from '@angular/router';
-import { AUTH_DATA } from '../constants/constants';
+import { AUTH_DATA } from '../constants/auth';
 
 @Injectable()
 export class AuthEffects {
