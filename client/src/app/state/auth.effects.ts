@@ -5,6 +5,7 @@ import { catchError, exhaustMap, finalize, map, of, tap } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { AuthApiActions, AuthPersistActions } from './auth.actions';
 import { Router } from '@angular/router';
+import { AUTH_DATA } from '../constants/constants';
 
 @Injectable()
 export class AuthEffects {
@@ -67,7 +68,7 @@ export class AuthEffects {
           AuthApiActions.registerUserSuccess
         ),
         tap(({ user }) => {
-          localStorage.setItem('authData', JSON.stringify(user));
+          localStorage.setItem(AUTH_DATA, JSON.stringify(user));
           this.router.navigate(['/job-listings']);
         })
       ),
@@ -78,7 +79,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthPersistActions.loadAuthDataFromLocalStorage),
       map(() => {
-        const userStr = localStorage.getItem('authData');
+        const userStr = localStorage.getItem(AUTH_DATA);
         if (userStr) {
           const user = JSON.parse(userStr);
           return AuthApiActions.loginUserSuccess({ user });
@@ -99,7 +100,7 @@ export class AuthEffects {
             of(AuthApiActions.logoutUserFailure()),
           ),
             finalize(() => {
-              localStorage.removeItem('authData');
+              localStorage.removeItem(AUTH_DATA);
             })
         )
       )
