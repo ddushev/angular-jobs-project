@@ -9,7 +9,6 @@
     <div class="navbar-nav ms-auto p-4 p-lg-0">
       <a routerLink="/" class="nav-item nav-link">Home</a>
       <a routerLink="job-listings" class="nav-item nav-link">Jobs' List</a>
-      <a routerLink="job-details" class="nav-item nav-link">Job Detail</a>
       @if((authState$ | async)?.isAuth) {
         <a routerLink="create-job" class="nav-item nav-link">Create job</a>
       }
