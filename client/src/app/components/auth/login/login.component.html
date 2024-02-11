@@ -11,14 +11,14 @@
             <div class="row g-3">
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input [appInputValidation]="emailInput" required type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                  <input [appAuthInputValidation]="emailInput" required type="email" class="form-control" name="email" id="email" placeholder="Your Email"
                     #emailInput="ngModel" ngModel pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}$">
                   <label for="email">Email</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input [appInputValidation]="passwordInput" required minlength="3" type="password" class="form-control" name="password" id="password"
+                  <input [appAuthInputValidation]="passwordInput" required minlength="3" type="password" class="form-control" name="password" id="password"
                     placeholder="Password" #passwordInput="ngModel" ngModel>
                   <label for="password">Password</label>
                 </div>

@@ -11,21 +11,21 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input [appInputValidation]="firstNameInput" required type="text" class="form-control"
+                  <input [appAuthInputValidation]="firstNameInput" required type="text" class="form-control"
                     name="firstName" id="firstName" placeholder="First Name" #firstNameInput="ngModel" ngModel>
                   <label for="firstName">First Name</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input [appInputValidation]="lastNameInput" required type="text" class="form-control"
+                  <input [appAuthInputValidation]="lastNameInput" required type="text" class="form-control"
                     name="lastName" id="lastName" placeholder="Last Name" #lastNameInput="ngModel" ngModel>
                   <label for="lastName">Last Name</label>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-floating">
-                  <input [appInputValidation]="emailInput" required type="email" class="form-control" name="email"
+                  <input [appAuthInputValidation]="emailInput" required type="email" class="form-control" name="email"
                     id="email" placeholder="Your Email" #emailInput="ngModel" ngModel
                     pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}$">
                   <label for="email">Your Email</label>
@@ -33,14 +33,14 @@
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input [appInputValidation]="passwordInput" minlength="3" required type="password" class="form-control"
+                  <input [appAuthInputValidation]="passwordInput" minlength="3" required type="password" class="form-control"
                     name="password" id="password" placeholder="Password" #passwordInput="ngModel" ngModel>
                   <label for="password">Password</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input [appInputValidation]="rePasswordInput" type="password" class="form-control"
+                  <input [appAuthInputValidation]="rePasswordInput" type="password" class="form-control"
                     name="rePassword" id="rePassword" placeholder="Repeat Password" #rePasswordInput="ngModel" ngModel>
                     <p class="error-msg"></p>
                   <label for="rePassword">Repeat Password</label>

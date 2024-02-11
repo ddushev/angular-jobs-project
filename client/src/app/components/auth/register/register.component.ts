@@ -7,13 +7,13 @@ import { IAuthState } from '../../../state/auth.state';
 import { authState } from '../../../state/auth.selector';
 import { AsyncPipe } from '@angular/common';
 import { AuthErrorComponent } from '../auth-error/auth-error.component';
-import { InputValidationDirective } from '../../../directives/input-validation/input-validation.directive';
+import { AuthInputValidationDirective } from '../../../directives/auth-input-validation/auth-input-validation.directive';
 import { MatchPasswordDirective } from '../../../directives/match-passwords/match-passwords.directive';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, AsyncPipe, AuthErrorComponent, InputValidationDirective, MatchPasswordDirective],
+  imports: [FormsModule, AsyncPipe, AuthErrorComponent, AuthInputValidationDirective, MatchPasswordDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

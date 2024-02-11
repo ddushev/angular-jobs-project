@@ -1,4 +1,4 @@
-import { InputValidationDirective } from './input-validation.directive';
+import { AuthInputValidationDirective } from './auth-input-validation.directive';
 import { ElementRef, Renderer2 } from '@angular/core';
 
 describe('InputValidationDirective', () => {
@@ -6,7 +6,7 @@ describe('InputValidationDirective', () => {
     const elMock: ElementRef<any> = {} as ElementRef<any>;
     const rendererMock: Renderer2 = {} as Renderer2;
 
-    const directive = new InputValidationDirective(elMock, rendererMock);
+    const directive = new AuthInputValidationDirective(elMock, rendererMock);
 
     expect(directive).toBeTruthy();
   });
