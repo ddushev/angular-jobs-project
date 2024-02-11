@@ -8,8 +8,8 @@ export interface IJob  {
   salary: string,
   location: string,
   description: string,
-  responsibilities: string,
-  qualifications: string,
-  _createdOn: number | Date,
+  responsibilities: string | string[],
+  qualifications: string | string[],
+  _createdOn: Date,
   _id: string,
 }
