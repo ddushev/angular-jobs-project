@@ -3,7 +3,7 @@
     <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Login</h1>
     <div class="row g-4">
       @if((authState$ | async)?.errorMsg) {
-      <app-auth-error></app-auth-error>
+        <app-server-error [errorMsg]="(authState$ | async)?.errorMsg!"></app-server-error>
       }
       <div class="col-md-6 login-container error-container">
         <div class="wow fadeInUp" data-wow-delay="0.5s">

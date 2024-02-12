@@ -4,28 +4,30 @@ import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
 import { JobService } from '../../services/job/job.service';
 import { Router } from '@angular/router';
 import { JobInputValidationDirective } from '../../directives/job-input-validation/job-input-validation.directive';
+import { ServerErrorComponent } from '../shared/server-error/server-error.component';
 
 @Component({
   selector: 'app-create-job',
   standalone: true,
-  imports: [ReactiveFormsModule, JobInputValidationDirective],
+  imports: [ReactiveFormsModule, JobInputValidationDirective, ServerErrorComponent],
   templateUrl: './create-job.component.html',
   styleUrl: './create-job.component.scss',
 })
 export class CreateJobComponent {
   JOB_FORM_FIELDS = JOB_FORM_FIELDS;
+  errorMsg: string = '';
 
   jobCreateForm = this.formBuilder.group({
-    [JOB_FORM_FIELDS.COMPANY_NAME]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.POSITION_NAME]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: ['',[Validators.required]],
-    [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.LOCATION]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.DESCRIPTION]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.RESPONSIBILITIES]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.QUALIFICATIONS]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.COMPANY_NAME]: ['', ],
+    [JOB_FORM_FIELDS.POSITION_NAME]: ['', ],
+    [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: ['',],
+    [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: ['', ],
+    [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: ['', ],
+    [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: ['', ],
+    [JOB_FORM_FIELDS.LOCATION]: ['', ],
+    [JOB_FORM_FIELDS.DESCRIPTION]: ['', ],
+    [JOB_FORM_FIELDS.RESPONSIBILITIES]: ['', ],
+    [JOB_FORM_FIELDS.QUALIFICATIONS]: ['', ],
   });
 
   constructor(
@@ -57,8 +59,13 @@ export class CreateJobComponent {
         this.jobCreateForm.value[JOB_FORM_FIELDS.RESPONSIBILITIES]!,
       salary: this.jobCreateForm.value[JOB_FORM_FIELDS.SALARY.SELECT_NAME]!,
     };
-    this.jobService.createJob(jobData).subscribe((job) => {
-      this.router.navigate(['/job-details/', job._id]);
+    this.jobService.createJob(jobData).subscribe({
+      next: (job) => {
+        this.router.navigate(['/job-details/', job._id]);
+      },
+      error: (err) => {
+        this.errorMsg = err.error.message;
+      },
     });
   }
 }

@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 import { IAuthState } from '../../../state/auth.state';
 import { authState } from '../../../state/auth.selector';
 import { AsyncPipe } from '@angular/common';
-import { AuthErrorComponent } from '../auth-error/auth-error.component';
 import { AuthInputValidationDirective } from '../../../directives/auth-input-validation/auth-input-validation.directive';
 import { MatchPasswordDirective } from '../../../directives/match-passwords/match-passwords.directive';
+import { ServerErrorComponent } from '../../shared/server-error/server-error.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, AsyncPipe, AuthErrorComponent, AuthInputValidationDirective, MatchPasswordDirective],
+  imports: [FormsModule, AsyncPipe, ServerErrorComponent, AuthInputValidationDirective, MatchPasswordDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

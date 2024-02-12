@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HomepageService } from '../../services/homepage/homepage.service';
+import { HomepageService } from '../../../services/homepage/homepage.service';
 
 @Component({
   selector: 'app-not-found',

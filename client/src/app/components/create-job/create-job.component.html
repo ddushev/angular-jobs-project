@@ -1,5 +1,8 @@
 <div class="job-container">
   <h4 class="mb-4">Create Job Ad</h4>
+  @if(errorMsg) {
+    <app-server-error [errorMsg]="errorMsg"></app-server-error>
+  }
   <form [formGroup]="jobCreateForm" (ngSubmit)="handleJobCreate()">
     <div class="row g-3">
       <div class="col-12 col-sm-6">
