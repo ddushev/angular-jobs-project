@@ -4,16 +4,19 @@
     <div class="row g-3">
       <div class="col-12 col-sm-6">
         <input [formControlName]="JOB_FORM_FIELDS.COMPANY_NAME" type="text" [name]="JOB_FORM_FIELDS.COMPANY_NAME"
-          class="form-control" placeholder="Company Name">
+          class="form-control" placeholder="Company Name"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.COMPANY_NAME)!">
       </div>
       <div class="col-12 col-sm-6">
         <input [formControlName]="JOB_FORM_FIELDS.POSITION_NAME" type="text" [name]="JOB_FORM_FIELDS.POSITION_NAME"
-          class="form-control" placeholder="Position Name">
+          class="form-control" placeholder="Position Name"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.POSITION_NAME)!">
       </div>
       <div class="col-12 col-sm-6">
         <select [formControlName]="JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME"
-          [name]="JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME" class="form-select">
-          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.SELECTED_OPTION" selected disabled>
+          [name]="JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME" class="form-select"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME)!">
+          <option value="" selected disabled>
             {{JOB_FORM_FIELDS.POSITION_CATEGORY.SELECTED_OPTION}}</option>
           <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.BUSINESS_DEVELOPMENT">
             {{JOB_FORM_FIELDS.POSITION_CATEGORY.BUSINESS_DEVELOPMENT}}</option>
@@ -35,8 +38,9 @@
 
       <div class="col-12 col-sm-6">
         <select [formControlName]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME"
-          [name]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME" class="form-select">
-          <option [value]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECTED_OPTION" selected disabled>
+          [name]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME" class="form-select"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME)!">
+          <option value="" selected disabled>
             {{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECTED_OPTION}}</option>
           <option [value]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.FULL_TIME">{{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.FULL_TIME}}
           </option>
@@ -50,8 +54,9 @@
       </div>
       <div class="col-12 col-sm-6">
         <select [formControlName]="JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME"
-          [name]="JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME" class="form-select">
-          <option [value]="JOB_FORM_FIELDS.OFFICE_POLICY.SELECTED_OPTION" selected disabled>
+          [name]="JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME" class="form-select"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME)!">
+          <option value="" selected disabled>
             {{JOB_FORM_FIELDS.OFFICE_POLICY.SELECTED_OPTION}}</option>
           <option [value]="JOB_FORM_FIELDS.OFFICE_POLICY.OFFICE">{{JOB_FORM_FIELDS.OFFICE_POLICY.OFFICE}}</option>
           <option [value]="JOB_FORM_FIELDS.OFFICE_POLICY.HOME">{{JOB_FORM_FIELDS.OFFICE_POLICY.HOME}}</option>
@@ -60,8 +65,9 @@
       </div>
       <div class="col-12 col-sm-6">
         <select [formControlName]="JOB_FORM_FIELDS.SALARY.SELECT_NAME" [name]="JOB_FORM_FIELDS.SALARY.SELECT_NAME"
-          class="form-select">
-          <option [value]="JOB_FORM_FIELDS.SALARY.SELECTED_OPTION" selected disabled>
+          class="form-select"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.SALARY.SELECT_NAME)!">
+          <option value="" selected disabled>
             {{JOB_FORM_FIELDS.SALARY.SELECTED_OPTION}}
           </option>
           <option [value]="JOB_FORM_FIELDS.SALARY.BELOW_20K">{{JOB_FORM_FIELDS.SALARY.BELOW_20K}}</option>
@@ -75,19 +81,23 @@
       </div>
       <div class="col-12 col-sm-6">
         <input [formControlName]="JOB_FORM_FIELDS.LOCATION" type="text" [name]="JOB_FORM_FIELDS.LOCATION"
-          class="form-control" placeholder="Job Location">
+          class="form-control" placeholder="Job Location"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.LOCATION)!">
       </div>
       <div class="col-12">
-        <textarea [formControlName]="JOB_FORM_FIELDS.DESCRIPTION" [name]="JOB_FORM_FIELDS.DESCRIPTION" class="form-control" rows="5"
-          placeholder="Job description"></textarea>
+        <textarea [formControlName]="JOB_FORM_FIELDS.DESCRIPTION" [name]="JOB_FORM_FIELDS.DESCRIPTION"
+          class="form-control" rows="5" placeholder="Job description"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.DESCRIPTION)!"></textarea>
       </div>
       <div class="col-12">
-        <textarea [formControlName]="JOB_FORM_FIELDS.RESPONSIBILITIES" [name]="JOB_FORM_FIELDS.RESPONSIBILITIES" class="form-control" rows="5"
-          placeholder="Responsibilities"></textarea>
+        <textarea [formControlName]="JOB_FORM_FIELDS.RESPONSIBILITIES" [name]="JOB_FORM_FIELDS.RESPONSIBILITIES"
+          class="form-control" rows="5" placeholder="Responsibilities"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.RESPONSIBILITIES)!"></textarea>
       </div>
       <div class="col-12">
-        <textarea [formControlName]="JOB_FORM_FIELDS.QUALIFICATIONS" [name]="JOB_FORM_FIELDS.QUALIFICATIONS" class="form-control" rows="5"
-          placeholder="Qualifications"></textarea>
+        <textarea [formControlName]="JOB_FORM_FIELDS.QUALIFICATIONS" [name]="JOB_FORM_FIELDS.QUALIFICATIONS"
+          class="form-control" rows="5" placeholder="Qualifications"
+          [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.QUALIFICATIONS)!"></textarea>
       </div>
       <div class="col-12">
         <button class="btn btn-primary w-100" type="submit">Submit</button>
