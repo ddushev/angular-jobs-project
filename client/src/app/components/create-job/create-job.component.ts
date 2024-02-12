@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
+import { JobService } from '../../services/job/job.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-job',
@@ -37,9 +39,31 @@ export class CreateJobComponent {
     [JOB_FORM_FIELDS.QUALIFICATIONS]: ['', [Validators.required]],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private jobService: JobService,
+    private router: Router,
+  ) {}
 
   handleJobCreate() {
-    console.log(this.jobCreateForm.value);
+      if(this.jobCreateForm.invalid) {
+        return;
+      }
+
+    const jobData = {
+      companyName: this.jobCreateForm.value[JOB_FORM_FIELDS.COMPANY_NAME]!,
+      description: this.jobCreateForm.value[JOB_FORM_FIELDS.DESCRIPTION]!,
+      employmentType: this.jobCreateForm.value[JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]!,
+      location: this.jobCreateForm.value[JOB_FORM_FIELDS.LOCATION]!,
+      officePolicy: this.jobCreateForm.value[JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]!,
+      positionCategory: this.jobCreateForm.value[JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]!,
+      positionName: this.jobCreateForm.value[JOB_FORM_FIELDS.POSITION_NAME]!,
+      qualifications: this.jobCreateForm.value[JOB_FORM_FIELDS.QUALIFICATIONS]!,
+      responsibilities: this.jobCreateForm.value[JOB_FORM_FIELDS.RESPONSIBILITIES]!,
+      salary: this.jobCreateForm.value[JOB_FORM_FIELDS.SALARY.SELECT_NAME]!,
+    }
+    this.jobService.createJob(jobData).subscribe((job) => {
+      this.router.navigate(['/job-details/', job._id]);
+    });
   }
 }

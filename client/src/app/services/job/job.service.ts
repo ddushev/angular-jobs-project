@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { IJob } from '../../types/job';
 import { map } from 'rxjs';
+import { IJobData } from '../../types/jobData';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +25,9 @@ export class JobService {
         responsibilities: !Array.isArray(job.responsibilities) ? job.responsibilities.split('. ') : job.responsibilities,
       }))
     );
+  }
+
+  createJob(jobData: IJobData) {
+    return this.http.post<IJob>(`${this.apiURL}/data/jobs`, jobData);
   }
 }
