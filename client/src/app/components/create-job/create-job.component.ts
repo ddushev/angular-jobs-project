@@ -18,16 +18,16 @@ export class CreateJobComponent {
   errorMsg: string = '';
 
   jobCreateForm = this.formBuilder.group({
-    [JOB_FORM_FIELDS.COMPANY_NAME]: ['', ],
-    [JOB_FORM_FIELDS.POSITION_NAME]: ['', ],
-    [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: ['',],
-    [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: ['', ],
-    [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: ['', ],
-    [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: ['', ],
-    [JOB_FORM_FIELDS.LOCATION]: ['', ],
-    [JOB_FORM_FIELDS.DESCRIPTION]: ['', ],
-    [JOB_FORM_FIELDS.RESPONSIBILITIES]: ['', ],
-    [JOB_FORM_FIELDS.QUALIFICATIONS]: ['', ],
+    [JOB_FORM_FIELDS.COMPANY_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.POSITION_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.LOCATION]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.DESCRIPTION]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.RESPONSIBILITIES]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.QUALIFICATIONS]: ['', [Validators.required]],
   });
 
   constructor(
