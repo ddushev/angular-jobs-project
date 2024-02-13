@@ -1,48 +1,55 @@
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
   <div class="container">
-      <div class="row gy-5 gx-4">
-          <div class="col-lg-8">
-              <div class="d-flex align-items-center mb-5">
-                <div class="text-start ps-4">
-                  <h2 class="company-name mb-3">{{job.companyName}}</h2>
-                  <h3 class="mb-3">{{job.positionName}}</h3>
-                      <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{job.location}}</span>
-                      <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{job.employmentType}}</span>
-                      <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{job.salary}}</span>
-                  </div>
-              </div>
-
-              <div class="mb-5">
-                  <h4 class="mb-3">Job description</h4>
-                  <p>{{job.description}}</p>
-                  <h4 class="mb-3">Responsibility</h4>
-                  <ul class="list-unstyled">
-                     @for (responsibility of job.responsibilities; track responsibility) {
-                      <li><i class="fa fa-angle-right text-primary me-2"></i>{{responsibility}}</li>
-                     }
-                  </ul>
-                  <h4 class="mb-3">Qualifications</h4>
-                  <ul class="list-unstyled">
-                    @for (qualifications of job.qualifications; track qualifications) {
-                      <li><i class="fa fa-angle-right text-primary me-2"></i>{{qualifications}}</li>
-                     }
-                  </ul>
-              </div>
-
-
+    <div class="row gy-5 gx-4">
+      <div class="col-lg-8">
+        <div class="d-flex align-items-center mb-5">
+          <div class="text-start ps-4">
+            <h2 class="company-name mb-3">{{job.companyName}}</h2>
+            <h3 class="mb-3">{{job.positionName}}</h3>
+            <span class="text-truncate me-3"><i
+                class="fa fa-map-marker-alt text-primary me-2"></i>{{job.location}}</span>
+            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{job.employmentType}}</span>
+            <span class="text-truncate me-0"><i
+                class="far fa-money-bill-alt text-primary me-2"></i>{{job.salary}}</span>
           </div>
+        </div>
 
-          <div class="col-lg-4">
-              <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
-                  <h4 class="mb-4">Job Summary</h4>
-                  <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{job._createdOn | date:'mediumDate'}}</p>
-                  <p><i class="fa fa-angle-right text-primary me-2"></i>Position: {{job.positionName}}</p>
-                  <p><i class="fa fa-angle-right text-primary me-2"></i>Office Policy: {{job.officePolicy}}</p>
-                  <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: {{job.salary}}</p>
-                  <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{job.location}}</p>
-              </div>
+        <div class="mb-5">
+          <h4 class="mb-3">Job description</h4>
+          <p>{{job.description}}</p>
+          <h4 class="mb-3">Responsibility</h4>
+          <ul class="list-unstyled">
+            @for (responsibility of job.responsibilities; track responsibility) {
+            <li><i class="fa fa-angle-right text-primary me-2"></i>{{responsibility}}</li>
+            }
+          </ul>
+          <h4 class="mb-3">Qualifications</h4>
+          <ul class="list-unstyled">
+            @for (qualifications of job.qualifications; track qualifications) {
+            <li><i class="fa fa-angle-right text-primary me-2"></i>{{qualifications}}</li>
+            }
+          </ul>
+        </div>
 
-          </div>
+
       </div>
+
+      <div class="col-lg-4">
+        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+          <h4 class="mb-4">Job Summary</h4>
+          <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{job._createdOn | date:'mediumDate'}}</p>
+          <p><i class="fa fa-angle-right text-primary me-2"></i>Position: {{job.positionName}}</p>
+          <p><i class="fa fa-angle-right text-primary me-2"></i>Office Policy: {{job.officePolicy}}</p>
+          <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: {{job.salary}}</p>
+          <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{job.location}}</p>
+        </div>
+        @if((authState$ | async)?.user?._id === job._ownerId) {
+        <div class="btn-container">
+          <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-primary">Delete</button>
+        </div>
+        }
+      </div>
+    </div>
   </div>
 </div>
