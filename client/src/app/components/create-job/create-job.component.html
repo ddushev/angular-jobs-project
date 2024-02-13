@@ -103,7 +103,7 @@
           [appJobInputValidation]="jobCreateForm.get(JOB_FORM_FIELDS.QUALIFICATIONS)!"></textarea>
       </div>
       <div class="col-12">
-        <button class="btn btn-primary w-100" type="submit">Submit</button>
+        <button [disabled]="jobCreateForm.invalid" class="btn btn-primary w-100" type="submit">Submit</button>
       </div>
     </div>
   </form>
