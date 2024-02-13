@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IJob } from '../../types/job';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IAuthState } from '../../state/auth.state';
 import { authState } from '../../state/auth.selector';
+import { JobService } from '../../services/job/job.service';
 
 @Component({
   selector: 'app-job-details',
@@ -18,10 +19,14 @@ export class JobDetailsComponent implements OnInit {
   authState$: Observable<IAuthState> = this.store.select(authState);
   job!: IJob
 
-  constructor(private store: Store, private activeRoute: ActivatedRoute) {}
+  constructor(private store: Store, private activeRoute: ActivatedRoute, private jobService: JobService, private router: Router) {}
 
   ngOnInit(): void {
     this.activeRoute.data.subscribe((data) => {
       this.job = data['jobDetails']})
+  }
+
+  handleJobDelete(id:string) {
+    this.jobService.deleteJob(id).subscribe(() => this.router.navigate(['/job-listings']));
   }
 }

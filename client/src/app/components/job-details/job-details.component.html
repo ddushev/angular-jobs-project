@@ -46,7 +46,7 @@
         @if((authState$ | async)?.user?._id === job._ownerId) {
         <div class="btn-container">
           <button class="btn btn-primary">Edit</button>
-          <button class="btn btn-primary">Delete</button>
+          <button (click)="handleJobDelete(job._id)" class="btn btn-primary">Delete</button>
         </div>
         }
       </div>

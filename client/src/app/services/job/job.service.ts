@@ -10,15 +10,16 @@ import { IJobData } from '../../types/jobData';
 })
 export class JobService {
   apiURL = environment.apiURL;
+  apiEndpoint = '/data/jobs';
 
   constructor(private http: HttpClient) {}
 
   getJobs() {
-    return this.http.get<IJob[]>(`${this.apiURL}/data/jobs`);
+    return this.http.get<IJob[]>(`${this.apiURL}${this.apiEndpoint}`);
   }
 
   getSingleJob(id: string) {
-    return this.http.get<IJob>(`${this.apiURL}/data/jobs/${id}`).pipe(
+    return this.http.get<IJob>(`${this.apiURL}${this.apiEndpoint}/${id}`).pipe(
       map((job) => ({
         ...job,
         qualifications: !Array.isArray(job.qualifications) ? job.qualifications.split('. ') : job.qualifications,
@@ -28,6 +29,10 @@ export class JobService {
   }
 
   createJob(jobData: IJobData) {
-    return this.http.post<IJob>(`${this.apiURL}/data/jobs`, jobData);
+    return this.http.post<IJob>(`${this.apiURL}${this.apiEndpoint}`, jobData);
+  }
+
+  deleteJob(id: string) {
+    return this.http.delete(`${this.apiURL}${this.apiEndpoint}/${id}`);
   }
 }
