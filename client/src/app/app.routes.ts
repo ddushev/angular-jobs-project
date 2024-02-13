@@ -14,6 +14,7 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [guestGuard]},
   {path: 'job-listings', component: JobListComponent},
   {path: 'job-details/:id', component: JobDetailsComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
+  {path: 'job-details/:id/edit', component: JobDetailsComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
   {path: 'create-job', component: CreateJobComponent, canActivate: [userGuard]},
   {path: '**', component: NotFoundComponent},
 ];

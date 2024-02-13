@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IJob } from '../../types/job';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -11,22 +11,30 @@ import { JobService } from '../../services/job/job.service';
 @Component({
   selector: 'app-job-details',
   standalone: true,
-  imports: [DatePipe, AsyncPipe],
+  imports: [DatePipe, AsyncPipe, RouterLink],
   templateUrl: './job-details.component.html',
-  styleUrl: './job-details.component.scss'
+  styleUrl: './job-details.component.scss',
 })
 export class JobDetailsComponent implements OnInit {
   authState$: Observable<IAuthState> = this.store.select(authState);
-  job!: IJob
+  job!: IJob;
 
-  constructor(private store: Store, private activeRoute: ActivatedRoute, private jobService: JobService, private router: Router) {}
+  constructor(
+    private store: Store,
+    private activeRoute: ActivatedRoute,
+    private jobService: JobService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.activeRoute.data.subscribe((data) => {
-      this.job = data['jobDetails']})
+      this.job = data['jobDetails'];
+    });
   }
 
-  handleJobDelete(id:string) {
-    this.jobService.deleteJob(id).subscribe(() => this.router.navigate(['/job-listings']));
+  handleJobDelete(id: string) {
+    this.jobService
+      .deleteJob(id)
+      .subscribe(() => this.router.navigate(['/job-listings']));
   }
 }
