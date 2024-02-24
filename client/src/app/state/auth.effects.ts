@@ -70,7 +70,7 @@ export class AuthEffects {
         ),
         tap(({ user }) => {
           localStorage.setItem(AUTH_DATA, JSON.stringify(user));
-          this.router.navigate(['/', PATHS.LOGIN]);
+          this.router.navigate(['/', PATHS.JOB_LISTINGS]);
         })
       ),
     { dispatch: false }
