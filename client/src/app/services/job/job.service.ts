@@ -26,8 +26,8 @@ export class JobService {
     return this.http.post<IJob>(`${this.apiURL}${this.jobsEndpoint}`, jobData);
   }
 
-  editJob(jobData: IJobData) {
-    return this.http.put<IJob>(`${this.apiURL}${this.jobsEndpoint}`, jobData);
+  editJob(jobData: IJobData, id: string) {
+    return this.http.put<IJob>(`${this.apiURL}${this.jobsEndpoint}/${id}`, jobData);
   }
 
   deleteJob(id: string) {

@@ -4,7 +4,7 @@ import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
 import { JobInputValidationDirective } from '../../directives/job-input-validation/job-input-validation.directive';
 import { ServerErrorComponent } from '../shared/server-error/server-error.component';
 import { JobService } from '../../services/job/job.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IJob } from '../../types/job';
 
 @Component({
@@ -28,6 +28,7 @@ export class EditJobComponent implements OnInit {
     private formBuilder: FormBuilder,
     private jobService: JobService,
     private activeRoute: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +53,36 @@ export class EditJobComponent implements OnInit {
     });
   }
 
-  handleJobEdit() {}
+  handleJobEdit() {
+    if (this.jobEditForm.invalid) {
+      return;
+    }
+
+    const editedJobData = {
+      companyName: this.jobEditForm.value[JOB_FORM_FIELDS.COMPANY_NAME]!,
+      description: this.jobEditForm.value[JOB_FORM_FIELDS.DESCRIPTION]!,
+      employmentType:
+        this.jobEditForm.value[JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]!,
+      location: this.jobEditForm.value[JOB_FORM_FIELDS.LOCATION]!,
+      officePolicy:
+        this.jobEditForm.value[JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]!,
+      positionCategory:
+        this.jobEditForm.value[
+          JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME
+        ]!,
+      positionName: this.jobEditForm.value[JOB_FORM_FIELDS.POSITION_NAME]!,
+      qualifications: this.jobEditForm.value[JOB_FORM_FIELDS.QUALIFICATIONS]!,
+      responsibilities:
+        this.jobEditForm.value[JOB_FORM_FIELDS.RESPONSIBILITIES]!,
+      salary: this.jobEditForm.value[JOB_FORM_FIELDS.SALARY.SELECT_NAME]!,
+    };
+    this.jobService.editJob(editedJobData, this.job._id).subscribe({
+      next: () => {
+        this.router.navigate(['/job-details/', this.job._id]);
+      },
+      error: (err) => {
+        this.errorMsg = err.error.message;
+      },
+    });
+  }
 }
