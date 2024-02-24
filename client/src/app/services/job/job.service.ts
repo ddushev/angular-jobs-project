@@ -19,13 +19,7 @@ export class JobService {
   }
 
   getSingleJob(id: string) {
-    return this.http.get<IJob>(`${this.apiURL}${this.jobsEndpoint}/${id}`).pipe(
-      map((job) => ({
-        ...job,
-        qualifications: !Array.isArray(job.qualifications) ? job.qualifications.split('. ') : job.qualifications,
-        responsibilities: !Array.isArray(job.responsibilities) ? job.responsibilities.split('. ') : job.responsibilities,
-      }))
-    );
+    return this.http.get<IJob>(`${this.apiURL}${this.jobsEndpoint}/${id}`);
   }
 
   createJob(jobData: IJobData) {

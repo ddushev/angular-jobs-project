@@ -1,0 +1,109 @@
+<div class="job-container">
+  <h4 class="mb-4">Edit Job Ad</h4>
+  @if(errorMsg) {
+  <app-server-error [errorMsg]="errorMsg"></app-server-error>
+  }
+  <form [formGroup]="jobEditForm" (ngSubmit)="handleJobEdit()">
+    <div class="row g-3">
+      <div class="col-12 col-sm-6">
+        <input [formControlName]="JOB_FORM_FIELDS.COMPANY_NAME" type="text" [name]="JOB_FORM_FIELDS.COMPANY_NAME"
+          class="form-control" placeholder="Company Name"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.COMPANY_NAME)!">
+      </div>
+      <div class="col-12 col-sm-6">
+        <input [formControlName]="JOB_FORM_FIELDS.POSITION_NAME" type="text" [name]="JOB_FORM_FIELDS.POSITION_NAME"
+          class="form-control" placeholder="Position Name"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.POSITION_NAME)!">
+      </div>
+      <div class="col-12 col-sm-6">
+        <select [formControlName]="JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME"
+          [name]="JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME" class="form-select"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME)!">
+          <option value="" selected disabled>
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.SELECTED_OPTION}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.BUSINESS_DEVELOPMENT">
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.BUSINESS_DEVELOPMENT}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.CUSTOMER_SERVICE">
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.CUSTOMER_SERVICE}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.HUMAN_RESOURCES">
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.HUMAN_RESOURCES}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.IT">{{JOB_FORM_FIELDS.POSITION_CATEGORY.IT}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.MARKETING">{{JOB_FORM_FIELDS.POSITION_CATEGORY.MARKETING}}
+          </option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.PROJECT_MANAGEMENT">
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.PROJECT_MANAGEMENT}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.SALES_COMMUNICATION">
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.SALES_COMMUNICATION}}</option>
+          <option [value]="JOB_FORM_FIELDS.POSITION_CATEGORY.TEACHING_EDUCATION">
+            {{JOB_FORM_FIELDS.POSITION_CATEGORY.TEACHING_EDUCATION}}</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <select [formControlName]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME"
+          [name]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME" class="form-select"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME)!">
+          <option value="" selected disabled>
+            {{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECTED_OPTION}}</option>
+          <option [value]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.FULL_TIME">{{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.FULL_TIME}}
+          </option>
+          <option [value]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.PART_TIME">{{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.PART_TIME}}
+          </option>
+          <option [value]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.INTERNSHIP">{{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.INTERNSHIP}}
+          </option>
+          <option [value]="JOB_FORM_FIELDS.EMPLOYMENT_TYPE.FREELANCE_PROJECT">
+            {{JOB_FORM_FIELDS.EMPLOYMENT_TYPE.FREELANCE_PROJECT}}</option>
+        </select>
+      </div>
+      <div class="col-12 col-sm-6">
+        <select [formControlName]="JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME"
+          [name]="JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME" class="form-select"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME)!">
+          <option value="" selected disabled>
+            {{JOB_FORM_FIELDS.OFFICE_POLICY.SELECTED_OPTION}}</option>
+          <option [value]="JOB_FORM_FIELDS.OFFICE_POLICY.OFFICE">{{JOB_FORM_FIELDS.OFFICE_POLICY.OFFICE}}</option>
+          <option [value]="JOB_FORM_FIELDS.OFFICE_POLICY.HOME">{{JOB_FORM_FIELDS.OFFICE_POLICY.HOME}}</option>
+          <option [value]="JOB_FORM_FIELDS.OFFICE_POLICY.HYBRID">{{JOB_FORM_FIELDS.OFFICE_POLICY.HYBRID}}</option>
+        </select>
+      </div>
+      <div class="col-12 col-sm-6">
+        <select [formControlName]="JOB_FORM_FIELDS.SALARY.SELECT_NAME" [name]="JOB_FORM_FIELDS.SALARY.SELECT_NAME"
+          class="form-select" [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.SALARY.SELECT_NAME)!">
+          <option value="" selected disabled>
+            {{JOB_FORM_FIELDS.SALARY.SELECTED_OPTION}}
+          </option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.BELOW_20K">{{JOB_FORM_FIELDS.SALARY.BELOW_20K}}</option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.BETWEEN_20K_39K">{{JOB_FORM_FIELDS.SALARY.BETWEEN_20K_39K}}</option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.BETWEEN_40K_59K">{{JOB_FORM_FIELDS.SALARY.BETWEEN_40K_59K}}</option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.BETWEEN_60K_79K">{{JOB_FORM_FIELDS.SALARY.BETWEEN_60K_79K}}</option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.BETWEEN_80K_99K">{{JOB_FORM_FIELDS.SALARY.BETWEEN_80K_99K}}</option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.ABOVE_100K">{{JOB_FORM_FIELDS.SALARY.ABOVE_100K}}</option>
+          <option [value]="JOB_FORM_FIELDS.SALARY.CONFIDENTIAL">{{JOB_FORM_FIELDS.SALARY.CONFIDENTIAL}}</option>
+        </select>
+      </div>
+      <div class="col-12 col-sm-6">
+        <input [formControlName]="JOB_FORM_FIELDS.LOCATION" type="text" [name]="JOB_FORM_FIELDS.LOCATION"
+          class="form-control" placeholder="Job Location"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.LOCATION)!">
+      </div>
+      <div class="col-12">
+        <textarea [formControlName]="JOB_FORM_FIELDS.DESCRIPTION" [name]="JOB_FORM_FIELDS.DESCRIPTION"
+          class="form-control" rows="5" placeholder="Job description"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.DESCRIPTION)!"></textarea>
+      </div>
+      <div class="col-12">
+        <textarea [formControlName]="JOB_FORM_FIELDS.RESPONSIBILITIES" [name]="JOB_FORM_FIELDS.RESPONSIBILITIES"
+          class="form-control" rows="5" placeholder="Responsibilities"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.RESPONSIBILITIES)!"></textarea>
+      </div>
+      <div class="col-12">
+        <textarea [formControlName]="JOB_FORM_FIELDS.QUALIFICATIONS" [name]="JOB_FORM_FIELDS.QUALIFICATIONS"
+          class="form-control" rows="5" placeholder="Qualifications"
+          [appJobInputValidation]="jobEditForm.get(JOB_FORM_FIELDS.QUALIFICATIONS)!"></textarea>
+      </div>
+      <div class="col-12">
+        <button [disabled]="jobEditForm.invalid" class="btn btn-primary w-100" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

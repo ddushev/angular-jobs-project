@@ -17,6 +17,12 @@ export class CreateJobComponent {
   JOB_FORM_FIELDS = JOB_FORM_FIELDS;
   errorMsg: string = '';
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private jobService: JobService,
+    private router: Router
+  ) {}
+
   jobCreateForm = this.formBuilder.group({
     [JOB_FORM_FIELDS.COMPANY_NAME]: ['', [Validators.required]],
     [JOB_FORM_FIELDS.POSITION_NAME]: ['', [Validators.required]],
@@ -29,12 +35,6 @@ export class CreateJobComponent {
     [JOB_FORM_FIELDS.RESPONSIBILITIES]: ['', [Validators.required]],
     [JOB_FORM_FIELDS.QUALIFICATIONS]: ['', [Validators.required]],
   });
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private jobService: JobService,
-    private router: Router
-  ) {}
 
   handleJobCreate() {
     if (this.jobCreateForm.invalid) {

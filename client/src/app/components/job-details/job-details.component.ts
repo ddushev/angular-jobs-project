@@ -3,7 +3,7 @@ import { IJob } from '../../types/job';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IAuthState } from '../../state/auth.state';
 import { authState } from '../../state/auth.selector';
 import { JobService } from '../../services/job/job.service';
@@ -23,12 +23,21 @@ export class JobDetailsComponent implements OnInit {
     private store: Store,
     private activeRoute: ActivatedRoute,
     private jobService: JobService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activeRoute.data.subscribe((data) => {
-      this.job = data['jobDetails'];
+      const mappedJob = {
+        ...data['jobDetails'],
+        qualifications: !Array.isArray(data['jobDetails'].qualifications)
+          ? data['jobDetails'].qualifications.split('. ')
+          : data['jobDetails'].qualifications,
+        responsibilities: !Array.isArray(data['jobDetails'].responsibilities)
+          ? data['jobDetails'].responsibilities.split('. ')
+          : data['jobDetails'].responsibilities,
+      };
+      this.job = mappedJob;
     });
   }
 

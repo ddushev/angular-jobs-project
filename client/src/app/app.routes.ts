@@ -8,13 +8,14 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { userGuard } from './guards/user/user.guard';
 import { guestGuard } from './guards/guest/guest.guard';
 import { jobDetailsResolver } from './components/job-details/job-details.resolver';
+import { EditJobComponent } from './components/edit-job/edit-job.component';
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [guestGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [guestGuard]},
   {path: 'job-listings', component: JobListComponent},
   {path: 'job-details/:id', component: JobDetailsComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
-  {path: 'job-details/:id/edit', component: JobDetailsComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
+  {path: 'job-details/:id/edit', component: EditJobComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
   {path: 'create-job', component: CreateJobComponent, canActivate: [userGuard]},
   {path: '**', component: NotFoundComponent},
 ];
