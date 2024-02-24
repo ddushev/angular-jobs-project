@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { AuthApiActions, AuthPersistActions } from './auth.actions';
 import { Router } from '@angular/router';
 import { AUTH_DATA } from '../constants/auth';
+import { PATHS } from '../constants/paths';
 
 @Injectable()
 export class AuthEffects {
@@ -69,7 +70,7 @@ export class AuthEffects {
         ),
         tap(({ user }) => {
           localStorage.setItem(AUTH_DATA, JSON.stringify(user));
-          this.router.navigate(['/job-listings']);
+          this.router.navigate(['/', PATHS.LOGIN]);
         })
       ),
     { dispatch: false }

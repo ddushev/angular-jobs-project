@@ -5,6 +5,7 @@ import { JobService } from '../../services/job/job.service';
 import { Router } from '@angular/router';
 import { JobInputValidationDirective } from '../../directives/job-input-validation/job-input-validation.directive';
 import { ServerErrorComponent } from '../shared/server-error/server-error.component';
+import { PATHS } from '../../constants/paths';
 
 @Component({
   selector: 'app-create-job',
@@ -61,7 +62,7 @@ export class CreateJobComponent {
     };
     this.jobService.createJob(jobData).subscribe({
       next: (job) => {
-        this.router.navigate(['/job-details/', job._id]);
+        this.router.navigate(['/', PATHS.JOB_DETAILS, job._id]);
       },
       error: (err) => {
         this.errorMsg = err.error.message;

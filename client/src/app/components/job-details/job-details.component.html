@@ -45,7 +45,7 @@
         </div>
         @if((authState$ | async)?.user?._id === job._ownerId) {
         <div class="btn-container">
-          <a [routerLink]="['/job-details', job._id, 'edit']">
+          <a [routerLink]="['/', PATHS.EDIT_JOB, job._id]">
             <button class="btn btn-primary">Edit</button>
           </a>
           <button (click)="handleJobDelete(job._id)" class="btn btn-primary">Delete</button>

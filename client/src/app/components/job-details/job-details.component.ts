@@ -7,6 +7,7 @@ import { Observable, map } from 'rxjs';
 import { IAuthState } from '../../state/auth.state';
 import { authState } from '../../state/auth.selector';
 import { JobService } from '../../services/job/job.service';
+import { PATHS } from '../../constants/paths';
 
 @Component({
   selector: 'app-job-details',
@@ -18,6 +19,7 @@ import { JobService } from '../../services/job/job.service';
 export class JobDetailsComponent implements OnInit {
   authState$: Observable<IAuthState> = this.store.select(authState);
   job!: IJob;
+  PATHS = PATHS;
 
   constructor(
     private store: Store,
@@ -44,6 +46,6 @@ export class JobDetailsComponent implements OnInit {
   handleJobDelete(id: string) {
     this.jobService
       .deleteJob(id)
-      .subscribe(() => this.router.navigate(['/job-listings']));
+      .subscribe(() => this.router.navigate(['/', PATHS.JOB_DETAILS]));
   }
 }

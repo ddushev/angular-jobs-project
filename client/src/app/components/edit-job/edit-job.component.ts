@@ -6,6 +6,7 @@ import { ServerErrorComponent } from '../shared/server-error/server-error.compon
 import { JobService } from '../../services/job/job.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IJob } from '../../types/job';
+import { PATHS } from '../../constants/paths';
 
 @Component({
   selector: 'app-edit-job',
@@ -78,7 +79,7 @@ export class EditJobComponent implements OnInit {
     };
     this.jobService.editJob(editedJobData, this.job._id).subscribe({
       next: () => {
-        this.router.navigate(['/job-details/', this.job._id]);
+        this.router.navigate(['/', PATHS.JOB_DETAILS, this.job._id]);
       },
       error: (err) => {
         this.errorMsg = err.error.message;

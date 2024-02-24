@@ -9,13 +9,14 @@ import { userGuard } from './guards/user/user.guard';
 import { guestGuard } from './guards/guest/guest.guard';
 import { jobDetailsResolver } from './components/job-details/job-details.resolver';
 import { EditJobComponent } from './components/edit-job/edit-job.component';
+import { PATHS } from './constants/paths';
 
 export const routes: Routes = [
-  {path: 'login', component: LoginComponent, canActivate: [guestGuard]},
-  {path: 'register', component: RegisterComponent, canActivate: [guestGuard]},
-  {path: 'job-listings', component: JobListComponent},
-  {path: 'job-details/:id', component: JobDetailsComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
-  {path: 'job-details/:id/edit', component: EditJobComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
-  {path: 'create-job', component: CreateJobComponent, canActivate: [userGuard]},
+  {path: PATHS.LOGIN, component: LoginComponent, canActivate: [guestGuard]},
+  {path: PATHS.REGISTER, component: RegisterComponent, canActivate: [guestGuard]},
+  {path: PATHS.JOB_LISTINGS, component: JobListComponent},
+  {path: `${PATHS.JOB_DETAILS}/:id`, component: JobDetailsComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
+  {path: `${PATHS.EDIT_JOB}/:id`, component: EditJobComponent, canActivate: [userGuard], resolve: {jobDetails: jobDetailsResolver}},
+  {path: PATHS.CREATE_JOB, component: CreateJobComponent, canActivate: [userGuard]},
   {path: '**', component: NotFoundComponent},
 ];
