@@ -3,8 +3,11 @@ import { JobService } from '../../services/job/job.service';
 import { IJob } from '../../types/job';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
+import { IAuthState } from '../../state/auth.state';
+import { Store } from '@ngrx/store';
+import { authState } from '../../state/auth.selector';
 
 @Component({
   selector: 'app-job-list',
@@ -15,11 +18,20 @@ import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
 })
 export class JobListComponent implements OnInit {
   jobsList: IJob[] = [];
+  jobsFiltered: IJob[] = [];
   positionCategory = JOB_FORM_FIELDS.POSITION_CATEGORY;
+  authState$: Observable<IAuthState> = this.store.select(authState);
+  authState?: IAuthState;
 
-  constructor(private jobService: JobService, private route: ActivatedRoute) {}
+  constructor(
+    private jobService: JobService,
+    private route: ActivatedRoute,
+    private store: Store
+  ) {}
 
   ngOnInit(): void {
+    this.authState$.subscribe((authState) => (this.authState = authState));
+
     this.route.queryParamMap
       .pipe(
         switchMap((params) => {
@@ -36,6 +48,21 @@ export class JobListComponent implements OnInit {
       )
       .subscribe((jobs) => {
         this.jobsList = jobs;
+        this.jobsFiltered = this.jobsList.filter(
+          (job) => job._ownerId !== this.authState?.user?._id
+        );
       });
+  }
+
+  handleAvailableClick() {
+    this.jobsFiltered = this.jobsList.filter(
+      (job) => job._ownerId !== this.authState?.user?._id
+    );
+  }
+
+  handleAddedClick() {
+    this.jobsFiltered = this.jobsList.filter(
+      (job) => job._ownerId == this.authState?.user?._id
+    );
   }
 }
