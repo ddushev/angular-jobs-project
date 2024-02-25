@@ -30,6 +30,14 @@ export class JobService {
     return this.http.put<IJob>(`${this.apiURL}${this.jobsEndpoint}/${id}`, jobData);
   }
 
+  editJobAdmin(jobData: IJob, id: string, accessToken: string) {
+    return this.http.put<IJob>(`${this.apiURL}${this.jobsEndpoint}/${id}`, jobData, {
+      headers: {
+        'X-Admin': accessToken
+      }
+    });
+  }
+
   deleteJob(id: string) {
     return this.http.delete(`${this.apiURL}${this.jobsEndpoint}/${id}`);
   }

@@ -12,4 +12,5 @@ export interface IJob  {
   qualifications: string | string[],
   _createdOn: Date,
   _id: string,
+  savedBy: string[],
 }

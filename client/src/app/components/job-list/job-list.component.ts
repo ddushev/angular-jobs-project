@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { JobService } from '../../services/job/job.service';
 import { IJob } from '../../types/job';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Observable, map, switchMap } from 'rxjs';
 import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
 import { IAuthState } from '../../state/auth.state';
 import { Store } from '@ngrx/store';
 import { authState } from '../../state/auth.selector';
+import { PATHS } from '../../constants/paths';
 
 @Component({
   selector: 'app-job-list',
@@ -26,7 +27,8 @@ export class JobListComponent implements OnInit {
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
-    private store: Store
+    private store: Store,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +65,46 @@ export class JobListComponent implements OnInit {
   handleAddedClick() {
     this.jobsFiltered = this.jobsList.filter(
       (job) => job._ownerId == this.authState?.user?._id
+    );
+  }
+
+  handleHeartClick(jobData: IJob) {
+    if (this.authState?.user) {
+      let savedBy: string[] = [];
+      if (jobData.savedBy && jobData.savedBy.length > 0) {
+        jobData.savedBy.includes(this.authState.user._id)
+          ? jobData.savedBy.filter((id) => id !== this.authState?.user?._id)
+          : [...jobData.savedBy, this.authState.user._id];
+      } else {
+        savedBy = [this.authState.user._id];
+      }
+      const updatedJobData = {
+        ...jobData,
+        savedBy,
+      };
+
+      this.jobService
+        .editJobAdmin(
+          updatedJobData as IJob,
+          updatedJobData._id,
+          this.authState.user.accessToken!
+        )
+        .subscribe((job) => {
+          this.jobsList = this.jobsList.map((j) =>
+            j._id === job._id ? job : j
+          );
+          this.jobsFiltered = this.jobsList.filter(
+            (j) => j._ownerId !== this.authState?.user?._id
+          );
+        });
+    } else {
+      this.router.navigate(['/', PATHS.LOGIN]);
+    }
+  }
+
+  handleSavedClick() {
+    this.jobsFiltered = this.jobsList.filter(
+      (job) => job.savedBy && job.savedBy.includes(this.authState?.user?._id!)
     );
   }
 }
