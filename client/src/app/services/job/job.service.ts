@@ -14,8 +14,8 @@ export class JobService {
 
   constructor(private http: HttpClient) {}
 
-  getJobs() {
-    return this.http.get<IJob[]>(`${this.apiURL}${this.jobsEndpoint}`);
+  getJobs(query?: string) {
+    return this.http.get<IJob[]>(`${this.apiURL}${this.jobsEndpoint}${query ? query : ''}`);
   }
 
   getSingleJob(id: string) {
