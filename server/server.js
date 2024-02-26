@@ -1351,7 +1351,8 @@
                 "responsibilities": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
                 "qualifications": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
                 "_createdOn": 1698519859107,
-                "_id": "941651bc-70d9-4157-afeb-aadcdd352c18"
+                "_id": "941651bc-70d9-4157-afeb-aadcdd352c18",
+                "savedBy": ["847ec027-f659-4086-8032-5173e2f9c93a"]
             },
             "941651bc-70d9-4157-afeb-aadcdd352c19": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1366,7 +1367,7 @@
                 "responsibilities": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
                 "qualifications": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
                 "_createdOn": 1698519859207,
-                "_id": "941651bc-70d9-4157-afeb-aadcdd352c19"
+                "_id": "941651bc-70d9-4157-afeb-aadcdd352c19",
             },
             "941651bc-70d9-4157-afeb-aadcdd352c18": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1441,7 +1442,8 @@
                 "responsibilities": "Identify potential business opportunities and develop strategic partnerships. Negotiate and close deals that align with the company's goals and objectives. Monitor market trends and competitor activities.",
                 "qualifications": "Bachelor's degree in Business Administration, Marketing, or related field. Proven experience in business development or sales roles, with a track record of achieving targets. Strong negotiation and communication skills.",
                 "_createdOn": 1710849859107,
-                "_id": "423e4567-e89b-12d3-a456-426614174004"
+                "_id": "423e4567-e89b-12d3-a456-426614174004",
+                "savedBy": ["847ec027-f659-4086-8032-5173e2f9c93a"]
             },
             "523e4567-e89b-12d3-a456-426614174005": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
