@@ -1685,7 +1685,8 @@
                 "responsibilities": "Receive, stow, pick, and pack products according to standard operating procedures. Use equipment such as forklifts and pallet jacks to move and organize inventory. Maintain a clean and safe work environment.",
                 "qualifications": "High school diploma or equivalent. Previous experience in a warehouse or logistics environment preferred. Ability to lift and carry heavy objects. Strong attention to detail and teamwork skills.",
                 "_createdOn": 1705855859107,
-                "_id": "723f4567-e89b-12d3-a456-426614174023"
+                "_id": "723f4567-e89b-12d3-a456-426614174023",
+                "savedBy": ["35c62d76-8152-4626-8712-eeb96381bea8"],
               },
               "823f4567-e89b-12d3-a456-426614174024": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1715,7 +1716,8 @@
                 "responsibilities": "Design and develop mechanical systems and components for electric vehicles and energy products. Conduct simulations, testing, and validation to ensure performance and reliability. Collaborate with cross-functional teams to integrate mechanical systems into product designs.",
                 "qualifications": "Bachelor's degree in Mechanical Engineering or related field. Proven experience in mechanical design and analysis, preferably in automotive or aerospace industries. Proficiency in CAD software and simulation tools.",
                 "_createdOn": 1705855859107,
-                "_id": "923f4567-e89b-12d3-a456-426614174025"
+                "_id": "923f4567-e89b-12d3-a456-426614174025",
+                "savedBy": ["35c62d76-8152-4626-8712-eeb96381bea8"]
               }
         },
         
