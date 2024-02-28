@@ -1412,7 +1412,8 @@
                 "responsibilities": "Lead recruitment efforts by sourcing, screening, and selecting top talent. Develop and implement HR policies and procedures. Provide guidance and support to managers and employees on HR-related matters.",
                 "qualifications": "Bachelor's degree in Human Resources, Business Administration, or related field. SHRM or PHR certification preferred. Proven experience in HR management, with a strong understanding of employment laws and regulations.",
                 "_createdOn": 1710849859107,
-                "_id": "223e4567-e89b-12d3-a456-426614174002"
+                "_id": "223e4567-e89b-12d3-a456-426614174002",
+                "savedBy": ["847ec027-f659-4086-8032-5173e2f9c93a"]
             },
             "323e4567-e89b-12d3-a456-426614174003": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
