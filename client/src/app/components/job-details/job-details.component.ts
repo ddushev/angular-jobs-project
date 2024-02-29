@@ -18,6 +18,7 @@ import { PATHS } from '../../constants/paths';
 })
 export class JobDetailsComponent implements OnInit {
   authState$: Observable<IAuthState> = this.store.select(authState);
+  authState?: IAuthState;
   job!: IJob;
   PATHS = PATHS;
 
@@ -29,6 +30,8 @@ export class JobDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.authState$.subscribe((authState) => (this.authState = authState));
+
     this.activeRoute.data.subscribe((data) => {
       const mappedJob = {
         ...data['jobDetails'],
@@ -47,5 +50,30 @@ export class JobDetailsComponent implements OnInit {
     this.jobService
       .deleteJob(id)
       .subscribe(() => this.router.navigate(['/', PATHS.JOB_DETAILS]));
+  }
+
+  handleApplyClick(jobData: IJob) {
+    let appliedBy: string[] = [];
+    if (jobData.appliedBy && jobData.appliedBy.length > 0) {
+      jobData.appliedBy.includes(this.authState?.user?._id!)
+        ? jobData.appliedBy.filter((id) => id !== this.authState?.user?._id)
+        : [...jobData.appliedBy, this.authState?.user?._id];
+    } else {
+      appliedBy = [this.authState?.user?._id!];
+    }
+    const updatedJobData = {
+      ...jobData,
+      appliedBy,
+    };
+
+    this.jobService
+      .editJobAdmin(
+        updatedJobData as IJob,
+        updatedJobData._id,
+        this.authState?.user?.accessToken!
+      )
+      .subscribe(() => {
+        this.router.navigate(['/', PATHS.JOB_LISTINGS]);
+      });
   }
 }

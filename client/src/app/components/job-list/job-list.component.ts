@@ -28,7 +28,7 @@ export class JobListComponent implements OnInit {
     private jobService: JobService,
     private route: ActivatedRoute,
     private store: Store,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -50,15 +50,19 @@ export class JobListComponent implements OnInit {
       )
       .subscribe((jobs) => {
         this.jobsList = jobs;
-        this.jobsFiltered = this.jobsList.filter(
-          (job) => job._ownerId !== this.authState?.user?._id
-        );
+        this.handleAvailableClick();
       });
   }
 
   handleAvailableClick() {
     this.jobsFiltered = this.jobsList.filter(
-      (job) => job._ownerId !== this.authState?.user?._id
+      (job) => {
+        if(job.appliedBy) {
+          return job._ownerId !== this.authState?.user?._id && !job.appliedBy.includes(this.authState?.user?._id!)
+        }else {
+          return job._ownerId !== this.authState?.user?._id
+        }
+       }
     );
   }
 
@@ -100,6 +104,13 @@ export class JobListComponent implements OnInit {
     } else {
       this.router.navigate(['/', PATHS.LOGIN]);
     }
+  }
+
+  handleAppliedClick() {
+    this.jobsFiltered = this.jobsList.filter(
+      (job) =>
+        job.appliedBy && job.appliedBy.includes(this.authState?.user?._id!)
+    );
   }
 
   handleSavedClick() {

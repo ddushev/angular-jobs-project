@@ -13,4 +13,5 @@ export interface IJob  {
   _createdOn: Date,
   _id: string,
   savedBy: string[],
+  appliedBy: string[],
 }
