@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'http://localhost:3030'
+  apiURL: 'https://abstracted-atom-fifth.glitch.me'
 };
