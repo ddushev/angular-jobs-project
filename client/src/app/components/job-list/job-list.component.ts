@@ -23,6 +23,7 @@ export class JobListComponent implements OnInit {
   positionCategory = JOB_FORM_FIELDS.POSITION_CATEGORY;
   authState$: Observable<IAuthState> = this.store.select(authState);
   authState?: IAuthState;
+  isSavedList: boolean = false;
 
   constructor(
     private jobService: JobService,
@@ -55,18 +56,21 @@ export class JobListComponent implements OnInit {
   }
 
   handleAvailableClick() {
-    this.jobsFiltered = this.jobsList.filter(
-      (job) => {
-        if(job.appliedBy) {
-          return job._ownerId !== this.authState?.user?._id && !job.appliedBy.includes(this.authState?.user?._id!)
-        }else {
-          return job._ownerId !== this.authState?.user?._id
-        }
-       }
-    );
+    this.isSavedList = false;
+    this.jobsFiltered = this.jobsList.filter((job) => {
+      if (job.appliedBy) {
+        return (
+          job._ownerId !== this.authState?.user?._id &&
+          !job.appliedBy.includes(this.authState?.user?._id!)
+        );
+      } else {
+        return job._ownerId !== this.authState?.user?._id;
+      }
+    });
   }
 
   handleAddedClick() {
+    this.isSavedList = false;
     this.jobsFiltered = this.jobsList.filter(
       (job) => job._ownerId == this.authState?.user?._id
     );
@@ -97,9 +101,16 @@ export class JobListComponent implements OnInit {
           this.jobsList = this.jobsList.map((j) =>
             j._id === job._id ? job : j
           );
-          this.jobsFiltered = this.jobsList.filter(
-            (j) => j._ownerId !== this.authState?.user?._id
+          this.jobsFiltered = this.jobsFiltered.map((j) =>
+            j._id === job._id ? job : j
           );
+          if (this.isSavedList) {
+            this.jobsFiltered = this.jobsFiltered.filter(
+              (j) =>
+                j._id !== job._id ||
+                j.savedBy.includes(this.authState?.user?._id!)
+            );
+          }
         });
     } else {
       this.router.navigate(['/', PATHS.LOGIN]);
@@ -107,6 +118,7 @@ export class JobListComponent implements OnInit {
   }
 
   handleAppliedClick() {
+    this.isSavedList = false;
     this.jobsFiltered = this.jobsList.filter(
       (job) =>
         job.appliedBy && job.appliedBy.includes(this.authState?.user?._id!)
@@ -114,8 +126,10 @@ export class JobListComponent implements OnInit {
   }
 
   handleSavedClick() {
+    this.isSavedList = true;
     this.jobsFiltered = this.jobsList.filter(
       (job) => job.savedBy && job.savedBy.includes(this.authState?.user?._id!)
     );
   }
+
 }
