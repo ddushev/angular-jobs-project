@@ -1347,42 +1347,13 @@
                 "officePolicy": "Hybrid",
                 "salary": "$80 000 - $99 999",
                 "location": "San Francisco, USA",
-                "description": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
-                "responsibilities": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
-                "qualifications": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
-                "_createdOn": 1698519859107,
-                "_id": "941651bc-70d9-4157-afeb-aadcdd352c18",
-                "savedBy": ["847ec027-f659-4086-8032-5173e2f9c93a"]
-            },
-            "941651bc-70d9-4157-afeb-aadcdd352c19": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "companyName": "Meta",
-                "positionName": "QA Engineer",
-                "positionCategory": "IT",
-                "employmentType": "Full Time",
-                "officePolicy": "Hybrid",
-                "salary": "60 000 - 79 999",
-                "location": "Los Angeles, USA",
-                "description": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
-                "responsibilities": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
-                "qualifications": "This cozy studio, nestled in a serene neighborhood, is a small yet inviting space designed for ultimate comfort. With warm decor, ample natural light, and thoughtful details, it offers a perfect retreat for those seeking a snug and intimate atmosphere.",
-                "_createdOn": 1698519859207,
-                "_id": "941651bc-70d9-4157-afeb-aadcdd352c19",
-            },
-            "941651bc-70d9-4157-afeb-aadcdd352c18": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "companyName": "Google",
-                "positionName": "Software Engineer",
-                "positionCategory": "IT",
-                "employmentType": "Full Time",
-                "officePolicy": "Hybrid",
-                "salary": "$80 000 - $99 999",
-                "location": "San Francisco, USA",
                 "description": "Exciting opportunity to join Google's innovative team. As a Software Engineer, you will play a key role in developing cutting-edge software solutions to drive the future of technology.",
                 "responsibilities": "Collaborate with cross-functional teams to design, develop, and implement software solutions. Conduct thorough testing and debugging to ensure high-quality code. Continuously enhance and optimize existing software applications.",
                 "qualifications": "Bachelor's degree in Computer Science or related field. Proven experience in software development and programming languages such as Java, Python, or C++. Strong problem-solving skills and ability to work in a fast-paced environment.",
                 "_createdOn": 1710849859107,
-                "_id": "941651bc-70d9-4157-afeb-aadcdd352c18"
+                "_id": "941651bc-70d9-4157-afeb-aadcdd352c18",
+                "appliedBy": ["847ec027-f659-4086-8032-5173e2f9c93a"],
+
             },
             "123e4567-e89b-12d3-a456-426614174001": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1397,7 +1368,8 @@
                 "responsibilities": "Develop and execute digital marketing strategies across various platforms. Analyze campaign performance and optimize based on key metrics. Stay updated with industry trends and best practices.",
                 "qualifications": "Bachelor's degree in Marketing, Business, or related field. Proven experience in digital marketing, with a focus on social media, SEM, and SEO. Strong analytical skills and ability to interpret data to drive insights.",
                 "_createdOn": 1710849859107,
-                "_id": "123e4567-e89b-12d3-a456-426614174001"
+                "_id": "123e4567-e89b-12d3-a456-426614174001",
+                "appliedBy": ["847ec027-f659-4086-8032-5173e2f9c93a"]
             },
             "223e4567-e89b-12d3-a456-426614174002": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1656,7 +1628,8 @@
                 "responsibilities": "Prepare and serve beverages and food items according to Starbucks standards. Provide friendly and efficient customer service, including taking orders and handling transactions. Maintain a clean and organized workspace.",
                 "qualifications": "High school diploma or equivalent. Previous experience in customer service or food service preferred. Strong communication and interpersonal skills. Ability to work in a fast-paced environment.",
                 "_createdOn": 1705855859107,
-                "_id": "523f4567-e89b-12d3-a456-426614174021"
+                "_id": "523f4567-e89b-12d3-a456-426614174021",
+                "appliedBy": ["35c62d76-8152-4626-8712-eeb96381bea8"],
               },
               "623f4567-e89b-12d3-a456-426614174022": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1688,6 +1661,7 @@
                 "_createdOn": 1705855859107,
                 "_id": "723f4567-e89b-12d3-a456-426614174023",
                 "savedBy": ["35c62d76-8152-4626-8712-eeb96381bea8"],
+                "appliedBy": ["35c62d76-8152-4626-8712-eeb96381bea8"],
               },
               "823f4567-e89b-12d3-a456-426614174024": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
