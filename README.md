@@ -10,7 +10,7 @@ The app uses a practice server that does not keep track of the changes made afte
 2. Open the server folder in the terminal and type `node server`. Don't close the terminal just minimize it and leave the server working.
 3. Open the client folder in another terminal and type `npm install` to install all dependencies.
 4. In the terminal with the client folder type `npm start`.
-5. Open the app at the address pointed out - most likely that would be ["Local:   http://127.0.0.1:5173/"](http://localhost:4200/)
+5. Open the app at the address pointed out - most likely that would be ["Local:   http://127.0.0.1:4200/"](http://localhost:4200/)
 
 ## Overview
 AngularJobs is a single-page application that allows users to register login and logout into a system. Logged-in users can create/read/update/delete job ads. Another functionality of the logged-in user is to also apply/cancel applications for job ads other users have published. Users can also save ads they like and refer back to them later or remove them from the saved list. Job lists can be filtered by the category of the ad which is done through the homepage. Guests(not logged-in users) can only browse job ads without the other functionalities.
