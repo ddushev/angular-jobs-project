@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { IJob } from '../../types/job';
-import { map } from 'rxjs';
 import { IJobData } from '../../types/jobData';
 
 @Injectable({
