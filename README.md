@@ -1,8 +1,8 @@
-# DISCLAIMER:
+# DISCLAIMER
 
 The app uses a practice server that does not keep track of the changes made after a couple of minutes of inactivity.
 
-## ReactBook app
+## AngularJobs app
 
 - Client hosted on Firebase - [https://angularjobs-2bda0.web.app/](https://angularjobs-2bda0.web.app/) (it needs around 30-60seconds to awaken the server once the job list is open or login/register is attempted)
 - Server hosted on Glitch - [https://abstracted-atom-fifth.glitch.me/data](https://abstracted-atom-fifth.glitch.me) (needs to be awakened if not used in the past 5 minutes)
