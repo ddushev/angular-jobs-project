@@ -8,13 +8,20 @@ import { Observable } from 'rxjs';
 import { IAuthState } from '../../../state/auth.state';
 import { AuthInputValidationDirective } from '../../../directives/auth-input-validation/auth-input-validation.directive';
 import { ServerErrorComponent } from '../../shared/server-error/server-error.component';
+import trimFormFields from '../../../utils/trimFormFields';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgClass, AsyncPipe, ServerErrorComponent, AuthInputValidationDirective],
+  imports: [
+    FormsModule,
+    NgClass,
+    AsyncPipe,
+    ServerErrorComponent,
+    AuthInputValidationDirective,
+  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnDestroy {
   authState$: Observable<IAuthState> = this.store.select(authState);
@@ -25,7 +32,11 @@ export class LoginComponent implements OnDestroy {
       form.reset();
       return;
     }
-    this.store.dispatch(AuthApiActions.loginUser({credentials: form.value}));
+    this.store.dispatch(
+      AuthApiActions.loginUser({
+        credentials: trimFormFields(form.value),
+      })
+    );
     form.reset();
   }
   ngOnDestroy(): void {

@@ -9,30 +9,38 @@ import { AsyncPipe } from '@angular/common';
 import { AuthInputValidationDirective } from '../../../directives/auth-input-validation/auth-input-validation.directive';
 import { MatchPasswordDirective } from '../../../directives/match-passwords/match-passwords.directive';
 import { ServerErrorComponent } from '../../shared/server-error/server-error.component';
+import trimFormFields from '../../../utils/trimFormFields';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, AsyncPipe, ServerErrorComponent, AuthInputValidationDirective, MatchPasswordDirective],
+  imports: [
+    FormsModule,
+    AsyncPipe,
+    ServerErrorComponent,
+    AuthInputValidationDirective,
+    MatchPasswordDirective,
+  ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnDestroy {
   authState$: Observable<IAuthState> = this.store.select(authState);
 
-
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
   handleRegister(form: NgForm) {
     if (form.invalid) {
       form.reset();
       return;
     }
-    this.store.dispatch(AuthApiActions.registerUser({registerData: form.value}));
+    this.store.dispatch(
+      AuthApiActions.registerUser({ registerData: trimFormFields(form.value) })
+    );
     form.reset();
   }
 
- ngOnDestroy(): void {
-  this.store.dispatch(AuthApiActions.clearErrorMsg());
- }
+  ngOnDestroy(): void {
+    this.store.dispatch(AuthApiActions.clearErrorMsg());
+  }
 }

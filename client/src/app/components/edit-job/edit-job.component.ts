@@ -1,5 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { JOB_FORM_FIELDS } from '../../constants/jobFormFields';
 import { JobInputValidationDirective } from '../../directives/job-input-validation/job-input-validation.directive';
 import { ServerErrorComponent } from '../shared/server-error/server-error.component';
@@ -7,6 +12,7 @@ import { JobService } from '../../services/job/job.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IJob } from '../../types/job';
 import { PATHS } from '../../constants/paths';
+import trimFormFields from '../../utils/trimFormFields';
 
 @Component({
   selector: 'app-edit-job',
@@ -29,28 +35,55 @@ export class EditJobComponent implements OnInit {
     private formBuilder: FormBuilder,
     private jobService: JobService,
     private activeRoute: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activeRoute.data.subscribe((data) => {
       this.job = data['jobDetails'];
-    })
+    });
     this.initializeForm();
   }
 
   private initializeForm(): void {
     this.jobEditForm = this.formBuilder.group({
-      [JOB_FORM_FIELDS.COMPANY_NAME]: [this.job.companyName, [Validators.required]],
-      [JOB_FORM_FIELDS.POSITION_NAME]: [this.job.positionName, [Validators.required]],
-      [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: [this.job.positionCategory, [Validators.required]],
-      [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: [this.job.employmentType, [Validators.required]],
-      [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: [this.job.officePolicy, [Validators.required]],
-      [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: [this.job.salary, [Validators.required]],
+      [JOB_FORM_FIELDS.COMPANY_NAME]: [
+        this.job.companyName,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.POSITION_NAME]: [
+        this.job.positionName,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: [
+        this.job.positionCategory,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: [
+        this.job.employmentType,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: [
+        this.job.officePolicy,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: [
+        this.job.salary,
+        [Validators.required],
+      ],
       [JOB_FORM_FIELDS.LOCATION]: [this.job.location, [Validators.required]],
-      [JOB_FORM_FIELDS.DESCRIPTION]: [this.job.description, [Validators.required]],
-      [JOB_FORM_FIELDS.RESPONSIBILITIES]: [this.job.responsibilities, [Validators.required]],
-      [JOB_FORM_FIELDS.QUALIFICATIONS]: [this.job.qualifications, [Validators.required]],
+      [JOB_FORM_FIELDS.DESCRIPTION]: [
+        this.job.description,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.RESPONSIBILITIES]: [
+        this.job.responsibilities,
+        [Validators.required],
+      ],
+      [JOB_FORM_FIELDS.QUALIFICATIONS]: [
+        this.job.qualifications,
+        [Validators.required],
+      ],
     });
   }
 
@@ -68,22 +101,22 @@ export class EditJobComponent implements OnInit {
       officePolicy:
         this.jobEditForm.value[JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]!,
       positionCategory:
-        this.jobEditForm.value[
-          JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME
-        ]!,
+        this.jobEditForm.value[JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]!,
       positionName: this.jobEditForm.value[JOB_FORM_FIELDS.POSITION_NAME]!,
       qualifications: this.jobEditForm.value[JOB_FORM_FIELDS.QUALIFICATIONS]!,
       responsibilities:
         this.jobEditForm.value[JOB_FORM_FIELDS.RESPONSIBILITIES]!,
       salary: this.jobEditForm.value[JOB_FORM_FIELDS.SALARY.SELECT_NAME]!,
     };
-    this.jobService.editJob(editedJobData, this.job._id).subscribe({
-      next: () => {
-        this.router.navigate(['/', PATHS.JOB_DETAILS, this.job._id]);
-      },
-      error: (err) => {
-        this.errorMsg = err.error.message;
-      },
-    });
+    this.jobService
+      .editJob(trimFormFields(editedJobData), this.job._id)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/', PATHS.JOB_DETAILS, this.job._id]);
+        },
+        error: (err) => {
+          this.errorMsg = err.error.message;
+        },
+      });
   }
 }

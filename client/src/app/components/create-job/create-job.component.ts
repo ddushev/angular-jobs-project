@@ -6,11 +6,16 @@ import { Router } from '@angular/router';
 import { JobInputValidationDirective } from '../../directives/job-input-validation/job-input-validation.directive';
 import { ServerErrorComponent } from '../shared/server-error/server-error.component';
 import { PATHS } from '../../constants/paths';
+import trimFormFields from '../../utils/trimFormFields';
 
 @Component({
   selector: 'app-create-job',
   standalone: true,
-  imports: [ReactiveFormsModule, JobInputValidationDirective, ServerErrorComponent],
+  imports: [
+    ReactiveFormsModule,
+    JobInputValidationDirective,
+    ServerErrorComponent,
+  ],
   templateUrl: './create-job.component.html',
   styleUrl: './create-job.component.scss',
 })
@@ -27,7 +32,10 @@ export class CreateJobComponent {
   jobCreateForm = this.formBuilder.group({
     [JOB_FORM_FIELDS.COMPANY_NAME]: ['', [Validators.required]],
     [JOB_FORM_FIELDS.POSITION_NAME]: ['', [Validators.required]],
-    [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: ['', [Validators.required]],
+    [JOB_FORM_FIELDS.POSITION_CATEGORY.SELECT_NAME]: [
+      '',
+      [Validators.required],
+    ],
     [JOB_FORM_FIELDS.EMPLOYMENT_TYPE.SELECT_NAME]: ['', [Validators.required]],
     [JOB_FORM_FIELDS.OFFICE_POLICY.SELECT_NAME]: ['', [Validators.required]],
     [JOB_FORM_FIELDS.SALARY.SELECT_NAME]: ['', [Validators.required]],
@@ -60,7 +68,7 @@ export class CreateJobComponent {
         this.jobCreateForm.value[JOB_FORM_FIELDS.RESPONSIBILITIES]!,
       salary: this.jobCreateForm.value[JOB_FORM_FIELDS.SALARY.SELECT_NAME]!,
     };
-    this.jobService.createJob(jobData).subscribe({
+    this.jobService.createJob(trimFormFields(jobData)).subscribe({
       next: (job) => {
         this.router.navigate(['/', PATHS.JOB_DETAILS, job._id]);
       },
