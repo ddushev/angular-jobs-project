@@ -7,7 +7,6 @@ import { AboutComponent } from './components/about/about.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { BackToTopComponent } from './components/core/back-to-top/back-to-top.component';
 import { HomepageService } from './services/homepage/homepage.service';
-import { environment } from './environments/environment';
 import { Store } from '@ngrx/store';
 import { AuthPersistActions } from './state/auth.actions';
 

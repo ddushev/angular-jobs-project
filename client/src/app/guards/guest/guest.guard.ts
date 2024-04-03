@@ -5,7 +5,7 @@ import { Observable, map, take } from 'rxjs';
 import { IAuthState } from '../../state/auth.state';
 import { authState } from '../../state/auth.selector';
 
-export const guestGuard: CanActivateFn = (route, state) => {
+export const guestGuard: CanActivateFn = (_route, _state) => {
   const store = inject(Store);
   const authState$: Observable<IAuthState> = store.select(authState);
   return authState$.pipe(
