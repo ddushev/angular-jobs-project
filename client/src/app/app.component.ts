@@ -27,8 +27,6 @@ import { AuthPersistActions } from './state/auth.actions';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  apiURL = environment.apiURL;
-
   constructor(public homePage: HomepageService, private store: Store) {}
 
   ngOnInit(): void {
