@@ -49,7 +49,7 @@ export class JobDetailsComponent implements OnInit {
   handleJobDelete(id: string) {
     this.jobService
       .deleteJob(id)
-      .subscribe(() => this.router.navigate(['/', PATHS.JOB_DETAILS]));
+      .subscribe(() => this.router.navigate(['/', PATHS.JOB_LISTINGS]));
   }
 
   handleApplyClick(jobData: IJob) {
