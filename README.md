@@ -5,7 +5,7 @@ The app uses a practice server that does not keep track of the changes made afte
 ## AngularJobs app
 
 - Client hosted on Firebase - [https://angularjobs-2bda0.web.app/](https://angularjobs-2bda0.web.app/) (it needs around 30-60seconds to awaken the server once the job list is open or login/register is attempted)
-- Server hosted on Glitch - [https://abstracted-atom-fifth.glitch.me/data](https://abstracted-atom-fifth.glitch.me) (needs to be awakened if not used in the past 5 minutes)
+- Server hosted on Render - [https://angular-jobs-project.onrender.com/data](https://angular-jobs-project.onrender.com/data) (needs to be awakened if not used in the past 5 minutes)
 
 ## To install locally
 
@@ -52,5 +52,5 @@ AngularJobs is a single-page application that allows users to register login and
    - The app uses REST API and RxJS to asynchronously make requests.
    - The job.service and auth.service file in the services folder contains methods for working with the API for all possible functionalities.
 5. Deployment
-    - The server is hosted via [Glitch](https://glitch.com/) and can be accessed at: [https://angularjobs-2bda0.web.app/](https://angularjobs-2bda0.web.app/). After several minutes of inactivity, it falls asleep.
-    - The client is deployed via [Firebase](https://firebase.google.com/) and can be access at [https://abstracted-atom-fifth.glitch.me/data](https://abstracted-atom-fifth.glitch.me)
+    - The server is hosted via [Render] and can be accessed at: [https://angular-jobs-project.onrender.com/data](https://angular-jobs-project.onrender.com/data). After several minutes of inactivity, it falls asleep.
+    - The client is deployed via [Firebase](https://firebase.google.com/) and can be access at [https://angularjobs-2bda0.web.app/](https://angularjobs-2bda0.web.app/)
