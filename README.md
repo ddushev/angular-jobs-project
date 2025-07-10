@@ -52,5 +52,5 @@ AngularJobs is a single-page application that allows users to register login and
    - The app uses REST API and RxJS to asynchronously make requests.
    - The job.service and auth.service file in the services folder contains methods for working with the API for all possible functionalities.
 5. Deployment
-    - The server is hosted via [Render] and can be accessed at: [https://angular-jobs-project.onrender.com/data](https://angular-jobs-project.onrender.com/data). After several minutes of inactivity, it falls asleep.
+    - The server is hosted via [Render](https://render.com/) and can be accessed at: [https://angular-jobs-project.onrender.com/data](https://angular-jobs-project.onrender.com/data). After several minutes of inactivity, it falls asleep.
     - The client is deployed via [Firebase](https://firebase.google.com/) and can be access at [https://angularjobs-2bda0.web.app/](https://angularjobs-2bda0.web.app/)
